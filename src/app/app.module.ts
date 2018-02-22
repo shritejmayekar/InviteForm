@@ -25,9 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
-import { ErrorMatcherComponent } from './error-matcher/error-matcher.component';
 import { FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
     PersonalDataComponent,
     ProfileUploadComponent,
     ThankYouMsgComponent,
-    ErrorMatcherComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,11 @@ import { ErrorStateMatcher } from '@angular/material/core';
     BrowserAnimationsModule,
     MatDividerModule,
     MatRadioModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

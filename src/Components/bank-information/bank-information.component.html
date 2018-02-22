@@ -2,74 +2,99 @@
 
 
   <mat-card>
+  <form #bankData="ngForm" (ngSubmit)="onSubmit(bankData)">
+
     <mat-card-title>
       <span class="contact100-form-title">
-       Employee Data
+        Bank Information
       </span>
     </mat-card-title>
-    <mat-divider></mat-divider>
-    <mat-card-content style="text-align:center">Please read all the instructions carefully. Required to HR, Finance and other obligations
+    <mat-card-content>
+      <mat-divider></mat-divider>
     </mat-card-content>
-    <mat-card-title style="text-align:left">First Name &emsp;
+    <mat-card-title style="text-align:left">PAN No. &emsp;
+      <span class="asterisk_input"> </span>
+    
+    </mat-card-title>
+    <mat-card-content>Please ensure to fill PAN No.
+    </mat-card-content>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g ABCDE1234F" name="panNumber" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" type="text" ngModel required>
+        <mat-error *ngIf="!panNumber.valid">{{getError()}}</mat-error>
+    </mat-form-field>
+    <mat-card-title style="text-align:left">Aadhaar ID &emsp;
       <span class="asterisk_input"> </span>
     </mat-card-title>
-    <mat-card-content >This has to be same  as it  appears in PAN
+    <mat-card-content>Please ensure to fill Correct Aadhar No.
     </mat-card-content>
-    <mat-form-field  class="input100">
-      <input matInput placeholder="For e.g Ram" name="firstName" type="text" pattern="/^[a-zA-Z]*$/" ngModel required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g 012345678999" name="aadharId" type="text"  ngModel required>
+              <mat-error *ngIf="!aadharId.valid">Please enter the aadhar No.</mat-error>
 
     </mat-form-field>
-    <mat-card-title style="text-align:left">Middle Name
+    <mat-card-title style="text-align:left">Bank Name&emsp;
+      <span class="asterisk_input"> </span>
+
     </mat-card-title>
-      <mat-card-content>This has to be same as it appears in PAN
-      </mat-card-content>
-      <mat-form-field  class="input100">
-        <input matInput placeholder="For e.g Mohan" name="middleName" type="text" pattern="/^[a-zA-Z]*$/" ngModel required>
-      </mat-form-field>
-      <mat-card-title style="text-align:left" >Last Name&emsp;
-              <span class="asterisk_input"> </span>
+    <mat-card-content>Please double check the stipend will be transferred to this validated Bank
+    </mat-card-content>
 
-      </mat-card-title>
-      <mat-card-content>This has to be same as it appears in PAN
-      </mat-card-content>
-      <mat-form-field  class="input100">
-        <input matInput placeholder="For e.g Sharma">
-      </mat-form-field>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g SBI" name="bankName" type="text"  ngModel required>
+                    <mat-error *ngIf="!bankName.valid">Please enter the Bank Name</mat-error>
 
-      <mat-card-title style="text-align:left">Mobile Number&emsp;
-        <span class="asterisk_input"> </span>
+    </mat-form-field>
 
-      </mat-card-title>
-      <mat-card-content>For e.g 9870000000
-      </mat-card-content>
-      <mat-form-field  class="input100">
-        <input matInput placeholder="For e.g Sharma" type="tel"  maxlength="10" name="mobileNumber" pattern="/^[0-9]/" ngModel required>
-              <mat-error *ngIf="mobileNumber.invalid">{{getErrorMessageMobile()}}</mat-error>
+    <mat-card-title style="text-align:left">Account Holder Name&emsp;
+      <span class="asterisk_input"> </span>
 
-      </mat-form-field>
-      <mat-card-title style="text-align:left">Gender&emsp;
-        <span class="asterisk_input"> </span>
+    </mat-card-title>
+    <mat-card-content>Same as in the Cheque Book / Passbook / Bank Statement
+    </mat-card-content>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g Ramesh " type="text"  name="accountName" ngModel required>
+      <mat-error>Enter the Account Holder Name</mat-error>
+    </mat-form-field>
 
-      </mat-card-title>
-      <mat-radio-group>
-        <mat-radio-button value="1" checked>Male</mat-radio-button>
-        <mat-radio-button value="2">Female</mat-radio-button>
-      </mat-radio-group>
-      <mat-card-content>
-      </mat-card-content>
-      <mat-card-title style="text-align:left">Email&emsp;
-        <span class="asterisk_input"> </span>
-      </mat-card-title>
-        <mat-form-field  class="input100">
-          <input matInput placeholder="Enter your email" type="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-            ngModel required />
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-form-field>
+    <mat-card-title style="text-align:left">Bank Account Number&emsp;
+      <span class="asterisk_input"> </span>
 
-      <mat-card-actions style="float:right"><button mat-raised-button color="primary">Next</button>
-      </mat-card-actions>
+    </mat-card-title>
+    <mat-card-content>Same as in the Cheque Book / Passbook / Bank Statement
+    </mat-card-content>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g 0123456789011 " type="text" maxlength="16" name="accountNumber" ngModel required>
+            <mat-error>Enter the Account Holder Number</mat-error>
 
+    </mat-form-field>
+
+    <mat-card-title style="text-align:left">Bank IFSC Code&emsp;
+      <span class="asterisk_input"> </span>
+
+    </mat-card-title>
+
+    <mat-card-content>As per the Branch, it can be found in the checkbook.
+    </mat-card-content>
+    <mat-form-field class="input100">
+      <input matInput placeholder="For e.g CNRB1000 " type="text" maxlength="10" name="ifscCode" ngModel required>
+                  <mat-error>Enter the Bank ISFCcocode</mat-error>
+
+    </mat-form-field>
+
+
+
+
+
+    <mat-card-actions>
+      <span style="float:left">
+        <button mat-raised-button color="primary">Previous</button>
+      </span>
+      <span style="float:right">
+       <button mat-raised-button color="primary" type="submit" [disabled]="!bankData.form.valid">Next</button>
+
+      </span>
+    </mat-card-actions>
+    </form>
   </mat-card>
 
 </div>

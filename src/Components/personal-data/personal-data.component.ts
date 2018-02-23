@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
-
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-personal-data',
   templateUrl: './personal-data.component.html',
@@ -8,7 +9,15 @@ import { FormControl, Validators, NgForm } from '@angular/forms';
 })
 export class PersonalDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location, private router: Router) { }
+  relationAs = [
+    { value: 'Mother-0', viewValue: 'Mother' },
+    { value: 'Father-1', viewValue: 'Father' },
+    { value: 'Uncle-2', viewValue: 'Uncle' }
+
+
+  ];
+
   email = new FormControl('', [Validators.required, Validators.email]);
   firstName = new FormControl('', [Validators.required, Validators.nullValidator]);
   mobileNumber = new FormControl('', [Validators.required, Validators.nullValidator]);
@@ -28,8 +37,14 @@ export class PersonalDataComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-      console.log(this.email);
-      console.log(form.value);
+    console.log(this.email);
+    console.log(form.value);
+    localStorage.setItem('personalDetails', JSON.stringify(form.value));
+    this.router.navigateByUrl('/profileUpload');
+  }
+  previous() {
+    this.location.back();
+
   }
 
 }

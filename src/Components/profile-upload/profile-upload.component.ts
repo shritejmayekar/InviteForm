@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-upload.component.scss']
 })
 export class ProfileUploadComponent implements OnInit {
-
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(image: string) {
+    this.croppedImage = image;
   }
 
 }

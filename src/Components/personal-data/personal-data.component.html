@@ -1,76 +1,99 @@
 <div class="container-contact100">
 
 
-  <mat-card><form #employeeData="ngForm" (ngSubmit)="onSubmit(employeeData)">
-    <mat-card-title>
-      <span class="contact100-form-title">
-        Employee Data
-      </span>
-    </mat-card-title>
-    <mat-divider></mat-divider>
-    <mat-card-content style="text-align:center">Please read all the instructions carefully. Required to HR, Finance and other obligations
-    </mat-card-content>
-    <mat-card-title style="text-align:left">First Name &emsp;
-      <span class="asterisk_input"> </span>
-    </mat-card-title>
-    <mat-card-content>This has to be same as it appears in PAN
-    </mat-card-content>
-    <mat-form-field class="input100">
-      <input matInput placeholder="For e.g Ram" name="firstName" type="text"  ngModel required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  <mat-card>
+    <form #personalData="ngForm" (ngSubmit)="onSubmit(personalData)">
+      <mat-card-title>
+        <span class="contact100-form-title">
+          Personal Data
+        </span>
+      </mat-card-title>
+      <mat-card-content>
+        <mat-divider></mat-divider>
 
-    </mat-form-field>
-    <mat-card-title style="text-align:left">Middle Name
-    </mat-card-title>
-    <mat-card-content>This has to be same as it appears in PAN
-    </mat-card-content>
-    <mat-form-field class="input100">
-      <input matInput placeholder="For e.g Mohan" name="middleName" type="text"  ngModel required>
-    </mat-form-field>
-    <mat-card-title style="text-align:left">Last Name&emsp;
-      <span class="asterisk_input"> </span>
+      </mat-card-content>
+      <mat-card-content style="text-align:center">Please enter the contact Information.
+      </mat-card-content>
+      <mat-card-title style="text-align:left">Date Of Birth (YYYY/MM/DD) &emsp;
+        <span class="asterisk_input"> </span>
+      </mat-card-title>
+      <!--mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field-->
+      <mat-card-title style="text-align:left">Relative' s Name &emsp;
+        <span class="asterisk_input"></span>
+      </mat-card-title>
 
-    </mat-card-title>
-    <mat-card-content>This has to be same as it appears in PAN
-    </mat-card-content>
-    <mat-form-field class="input100">
-      <input matInput placeholder="For e.g Sharma" name="lastName" ngModel required>
-    </mat-form-field>
+      <mat-form-field class="input100">
+        <input matInput placeholder="Name" name="name" type="text" ngModel required>
+      </mat-form-field>
+      <mat-card-title style="text-align:left">Realation&emsp;
+        <span class="asterisk_input"> </span>
+      </mat-card-title>
+      <mat-form-field style="width:10em">
+        <mat-select name="relationAs" [(value)]="selected" ngModel required>
+          <mat-option *ngFor="let relation of  relationAs" [value]="relation.value">
+            {{ relation.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-card-title style="text-align:left">Mobile Number&emsp;
-      <span class="asterisk_input"> </span>
 
-    </mat-card-title>
-    <mat-card-content>For e.g 9870000000
-    </mat-card-content>
-    <mat-form-field class="input100">
-      <input matInput placeholder="For e.g Sharma" type="tel" maxlength="10" name="mobileNumber"  ngModel required>
-      <mat-error *ngIf="mobileNumber.invalid">{{getErrorMessageMobile()}}</mat-error>
+      <mat-card-title style="text-align:left">Relative's Mobile Number&emsp;
+        <span class="asterisk_input"> </span>
 
-    </mat-form-field>
-    <mat-card-title style="text-align:left">Gender&emsp;
-      <span class="asterisk_input"> </span>
+      </mat-card-title>
+      <mat-card-content>Please Enter your Relative's or any other permananent Number
+      </mat-card-content>
+      <mat-form-field class="input100">
+        <input matInput placeholder="Mobile Number" type=" tel " pattern="[0-9]*" minlength="10" maxlength="10" name="contact" ngModel required>
 
-    </mat-card-title>
-    <mat-radio-group name="gender" ngModel>
-      <mat-radio-button value="male" checked name="gender" >Male</mat-radio-button>
-      <mat-radio-button value="female" name="gender" >Female</mat-radio-button>
-    </mat-radio-group>
-    <mat-card-content>
-    </mat-card-content>
-    <mat-card-title style="text-align:left">Email&emsp;
-      <span class="asterisk_input"> </span>
-    </mat-card-title>
-    <mat-form-field class="input100">
-      <input matInput placeholder="Enter your email" type="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-        ngModel required />
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
+      </mat-form-field>
+      <mat-card-title style="text-align:left">Relative's Occupation&emsp;
+      </mat-card-title>
+      <mat-form-field class="input100">
+        <input matInput placeholder="Occupation" type="text" name="occupation" ngModel />
+      </mat-form-field>
 
-    <mat-card-actions style="float:right">
-      <button mat-raised-button color="primary"  type="submit" [disabled]="!employeeData.form.valid" >Next</button>
-    </mat-card-actions>
-  </form>
+      <mat-card-title style="text-align:left">Family Income(p.a)&emsp;
+      </mat-card-title>
+      <mat-radio-group name="relativeAnnualSalary" ngModel>
+        <ul style="padding:5px">
+          <li>
+            <mat-radio-button value="0-5" checked name="gender">0-5 Lacs</mat-radio-button>
+
+          </li>
+          <li><mat-radio-button value="5-6" name="gender">5-6 Lacs</mat-radio-button>
+          </li>
+          <li><mat-radio-button value=">10" name="gender">>10 Lacs</mat-radio-button></li>
+        </ul>
+
+      </mat-radio-group>
+      <mat-card-content></mat-card-content>
+      <mat-card-title style="text-align:left">Permanent Address&emsp;
+      </mat-card-title>
+      <mat-form-field class="input100">
+        <input matInput placeholder="Enter the address" type="text" name="address" ngModel />
+      </mat-form-field>
+
+      <mat-card-title style="text-align:left">Current Address&emsp;
+        <span class="asterisk_input"></span>
+      </mat-card-title>
+      <mat-form-field class="input100">
+        <input matInput placeholder="Enter the address" type="text" name="permanentAddress" ngModel required />
+      </mat-form-field>
+  <mat-card-actions>
+    <span style="float:left">
+      <button mat-raised-button color="primary" (click)="previous()">Previous</button>
+    </span>
+    <span style="float:right">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!personalData.form.valid">Next</button>
+  
+    </span>
+  </mat-card-actions>
+    </form>
   </mat-card>
 
 </div>

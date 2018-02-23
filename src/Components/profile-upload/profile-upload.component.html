@@ -1,3 +1,27 @@
-<p>
-  profile-upload works!
-</p>
+<div class="container-contact100">
+  <mat-card>
+    <mat-card-title>
+      <span class="contact100-form-title">
+        Profile Upload
+      </span>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+
+    </mat-card-content>
+
+    <input type="file" (change)="fileChangeEvent($event)" />
+    <mat-card class="smallWidth">
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
+        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </mat-card>
+
+
+    <img [src]="croppedImage" />
+
+
+
+  </mat-card>
+
+
+</div>

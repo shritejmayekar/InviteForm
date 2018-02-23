@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
-
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import * as $ from 'jquery';
@@ -19,7 +19,12 @@ export class QualificationComponent implements OnInit {
     { value: 'ME-3', viewValue: 'ME' },
     { value: 'MTech-4', viewValue: 'MTech' }
   ];
-  constructor(private router: Router) { }
+  hiringCities = [
+    { value: 'Bengalaru-0', viewValue: 'Bengalaru' },
+    { value: 'Mumbai-1', viewValue: 'Mumabai' },
+    { value: 'Delhi-2', viewValue: 'Delhi' }
+  ];
+  constructor(private router: Router, private location: Location) { }
   ngOnInit() {
     $('#extraQualification').hide();
 
@@ -36,8 +41,13 @@ export class QualificationComponent implements OnInit {
       return;
     }
     console.log(form.value);
+    console.log();
     localStorage.setItem('profileDetails', JSON.stringify(form.value));
     this.router.navigateByUrl('/personalData');
+
+  }
+  previous() {
+    this.location.back();
 
   }
 }

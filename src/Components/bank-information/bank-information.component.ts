@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
+import { Location } from '@angular/common';
+
 
 import { Router } from '@angular/router';
 
@@ -11,15 +13,20 @@ import { Router } from '@angular/router';
 export class BankInformationComponent implements OnInit {
 
 
-  constructor(private router: Router) { }
-  panNumber = new FormControl('', [Validators.required, Validators.pattern('text')]);
-  aadharId =  new FormControl('', [Validators.required, Validators.maxLength(12)]);
-  bankName =  new FormControl('', Validators.required);
+  constructor(private router: Router, private location: Location) { }
+  panNumber = new FormControl('', [Validators.required]);
+  aadharId = new FormControl('', [Validators.required, Validators.maxLength(12)]);
+  bankName = new FormControl('', Validators.required);
   accountName = new FormControl('', Validators.required);
-  getError () {
-    return this.panNumber.hasError('required') ? 'Please enter PAN no.' :
-      this.panNumber.hasError('pattern') ? 'Please enter valid PAN no.' :
-      '';
+  getError() {
+    return this.panNumber.hasError('required') ? 'Please enter valid PAN no.' :
+      this.panNumber.hasError('*') ? 'Please enter valid PAN no.' :
+        '';
+  }
+  getErrorAadhar() {
+    return this.aadharId.hasError('required') ? 'Please enter valid aadhar no.' :
+      this.aadharId.hasError('*') ? 'Please enter valid aadhar no.' :
+        '';
   }
   ngOnInit() {
   }
@@ -30,6 +37,10 @@ export class BankInformationComponent implements OnInit {
     console.log(form.value);
     localStorage.setItem('bankDetails', JSON.stringify(form.value));
     this.router.navigateByUrl('/qualification');
+
+  }
+  previous() {
+    this.location.back();
 
   }
 

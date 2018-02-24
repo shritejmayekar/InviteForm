@@ -14,6 +14,7 @@ import { ThankYouMsgComponent } from '../Components/thank-you-msg/thank-you-msg.
 
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldControl} from '@angular/material/form-field';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -26,13 +27,13 @@ import { FormControl } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher, DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { DataService } from './data.service';
+import { MatDatepickerModule, MatNativeDateModule, DateAdapter } from '@angular/material';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { DataService } from './data.service';
     PersonalDataComponent,
     ProfileUploadComponent,
     ThankYouMsgComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,10 +63,10 @@ import { DataService } from './data.service';
     MatSelectModule,
    MatDatepickerModule,
    ImageCropperModule,
-   HttpClientModule
-
-
-
+   HttpClientModule,
+   MatDatepickerModule,
+   MatNativeDateModule,
+   MatFormFieldModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

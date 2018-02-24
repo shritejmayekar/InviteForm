@@ -50,6 +50,7 @@ export class EmployeeDataComponent implements OnInit {
           localStorage.setItem('employeeObjectId', JSON.stringify(data.data.employeeObjectId));
           localStorage.setItem(' inviteFormDetails', JSON.stringify(data.data.inviteFormDetails));
           localStorage.setItem('personalDetails', JSON.stringify(data.data.personalDetails));
+          localStorage.setItem('profileData', JSON.stringify(data.data.profileDetails));
           localStorage.setItem('profileDetails', JSON.stringify(data.data.profileDetails));
           localStorage.setItem('profileImageDetails', JSON.stringify(data.data.profileImageDetails));
         }

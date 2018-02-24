@@ -3,113 +3,119 @@
 
   <mat-card>
     <form #qualificationData="ngForm" (ngSubmit)="onSubmit(qualificationData)">
+      <form>
+        <mat-card-title>
+          <span class="contact100-form-title">
+            Qualification Details
+          </span>
+        </mat-card-title>
+        <mat-card-content>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-content>
+          Please fill in all your Qualification
+        </mat-card-content>
+        <mat-card-actions>
+          <span style="color:whitesmoke;float:left">
+            <button mat-raised-button color="primary" (click)="AddQualification()">Add Qualification</button>
+          </span>
+          <span style="color:rgb(228, 55, 55);float:right">
+            <button mat-raised-button color="warn" (click)="HideQualification()">-</button>
 
-      <mat-card-title>
-        <span class="contact100-form-title">
-          Qualification Details
-        </span>
-      </mat-card-title>
-      <mat-card-content>
-        <mat-divider></mat-divider>
-      </mat-card-content>
-      <mat-card-content>
-        Please fill in all your Qualification
-      </mat-card-content>
-      <mat-card-actions>
-        <span style="color:whitesmoke;float:left">
-          <button mat-raised-button color="primary" (click)="AddQualification()">Add Qualification</button>
-        </span>
-        <span style="color:rgb(228, 55, 55);float:right">
-          <button mat-raised-button color="warn" (click)="HideQualification()">-</button>
-
-        </span>
-      </mat-card-actions>
+          </span>
+        </mat-card-actions>
+      </form>
       <div id="extraQualification">
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">Type of Qualification &emsp;
-            <span class="asterisk_input"> </span></h3>
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Type of Qualification &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
 
-          </mat-card-title>
-          
-          <mat-form-field>
-            <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel required>
-              <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification.value"   >
-                {{ qualification.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">Qualification &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          <mat-form-field class="input100">
-            <input matInput placeholder="For e.g B.E" name="qualification" type="text" pattern="^([a-zA-Z.]{3,15})$"  ngModel required>
-            <mat-error>Enter the valid Qualification</mat-error>
-          </mat-form-field>
+        </mat-card-title>
 
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">Discipline &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          <mat-form-field class="input100">
-            <input matInput placeholder="For e.g Computer Science" name="discipline" type="text"  pattern="^([a-zA-Z\s]{3,22})$" ngModel required>
-            <mat-error>Enter the valid discipline</mat-error>
-          </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel={{typeOfQualification}} required>
+            <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification.value">
+              {{ qualification.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Qualification &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
+
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g B.E" name="qualification" type="text" pattern="^([a-zA-Z.]{3,15})$" ngModel={{qualification}}
+            required>
+          <mat-error>Enter the valid Qualification</mat-error>
+        </mat-form-field>
+
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Discipline &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
+
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g Computer Science" name="discipline" type="text" pattern="^([a-zA-Z\s]{3,22})$" ngModel={{discipline}}
+            required>
+          <mat-error>Enter the valid discipline</mat-error>
+        </mat-form-field>
 
 
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">College &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          <mat-form-field class="input100">
-            <input matInput placeholder="For e.g D.Y Patil Engineering nerul" name="college" type="text"  pattern="^([a-zA-Z\s.,]{3,40})$" ngModel required>
-            <mat-error>Enter the valid college Name</mat-error>
-          </mat-form-field>
-        
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">University &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          <mat-form-field class="input100">
-            <input matInput placeholder="For e.g University Of Mumbai" name="university" type="text" ngModel required>
-            <mat-error>Enter the valid University Name</mat-error>
-          </mat-form-field>
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">College &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
 
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">Year of Passing &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          
-          <mat-form-field>
-            <mat-select placeholder="Degree" name="yearOfPassing" [(value)]="selected" ngModel required>
-              <mat-option *ngFor="let year of passingYear" [value]="year.value">
-                {{year.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g D.Y Patil Engineering nerul" name="college" type="text" pattern="^([a-zA-Z\s.,]{3,40})$"
+            ngModel={{college}} required>
+          <mat-error>Enter the valid college Name</mat-error>
+        </mat-form-field>
 
-          <mat-card-title style="text-align:left;">
-            <h3 style="text-align:left">Percentage Aggregate(%) &emsp;
-              <span class="asterisk_input"> </span>
-            </h3>
-          
-          </mat-card-title>
-          <mat-form-field class="input100">
-            <input matInput placeholder="For e.g 80" name="aggregatePercentage" type="text" pattern="^[0-9]{2,2}$" ngModel required>
-            <mat-error>Enter the valid Percent</mat-error>
-          </mat-form-field>
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">University &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
 
-      <!-- </div> -->
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g University Of Mumbai" name="university" type="text" ngModel={{university}} required>
+          <mat-error>Enter the valid University Name</mat-error>
+        </mat-form-field>
+
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Year of Passing &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
+
+        </mat-card-title>
+
+        <mat-form-field>
+          <mat-select placeholder="Degree" name="yearOfPassing" [(value)]="selected" ngModel={{yearOfPassing}} required>
+            <mat-option *ngFor="let year of passingYear" [value]="year.value">
+              {{year.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Percentage Aggregate(%) &emsp;
+            <span class="asterisk_input"> </span>
+          </h3>
+
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g 80" name="aggregatePercentage" type="text" pattern="^[0-9]{2,2}$" ngModel={{aggregatePercentage}}
+            required>
+          <mat-error>Enter the valid Percent</mat-error>
+        </mat-form-field>
+
+      </div>
       <!-- <mat-card-title style="text-align:left">Training Details&emsp;
       </mat-card-title>
       <div>
@@ -139,8 +145,8 @@
       </mat-card-title>
 <mat-form-field style="width:10em">
   <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel required>
-    <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity.value">
-      {{ hiringCity.viewValue }}
+    <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity">
+      {{ hiringCity }}
     </mat-option>
     </mat-select>
 </mat-form-field>
@@ -152,13 +158,13 @@
   <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel required>
 
 </mat-form-field> -->
-</div>
+      <!-- </div> -->
       <mat-card-actions>
         <span style="float:left">
           <button mat-raised-button color="primary" (click)="previous()">Previous</button>
         </span>
         <span style="float:right">
-          <button mat-raised-button color="primary" type="submit" [disabled]="!qualificationData.form.valid" >Next</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!qualificationData.form.valid">Next</button>
 
         </span>
       </mat-card-actions>

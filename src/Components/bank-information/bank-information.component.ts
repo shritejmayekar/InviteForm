@@ -21,8 +21,8 @@ export class BankInformationComponent implements OnInit {
   aadhaarId = new FormControl('', [Validators.required, Validators.maxLength(12)]);
   bankName = new FormControl('', Validators.required);
   accountName = new FormControl('', Validators.required);
-  accountNumber = new FormControl('',Validators.required);
-  ifscCode = new FormControl('',Validators.required);
+  accountNumber = new FormControl('', Validators.required);
+  ifscCode = new FormControl('', Validators.required);
   getError() {
     return this.panNumber.hasError('required') ? 'Please enter valid PAN no.' :
       this.panNumber.hasError('*') ? 'Please enter valid PAN no.' :

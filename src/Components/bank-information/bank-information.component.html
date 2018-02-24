@@ -19,8 +19,8 @@
     <mat-card-content>Please ensure to fill PAN No.
     </mat-card-content>
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g ABCDE1234F" name="panNumber" pattern='[A-Z]{5}\d{4}[A-Z]{1}' type="text" ngModel required>
-        <mat-error *ngIf="!panNumber.valid">{{getError()}}</mat-error>
+      <input matInput placeholder="For e.g ABCDE1234F" name="panNumber" pattern='[A-Z]{5}\d{4}[A-Z]{1}' type="text" ngModel={{panNumber}} required>
+        <mat-error>Enter the valid PAN no.</mat-error>
     </mat-form-field>
     <mat-card-title style="text-align:left">Aadhaar ID &emsp;
       <span class="asterisk_input"> </span>
@@ -28,8 +28,8 @@
     <mat-card-content>Please ensure to fill Correct Aadhar No.
     </mat-card-content>
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g 012345678999" pattern="^[0-9]{10,12}$"name="aadharId" type="text"  ngModel required>
-              <mat-error *ngIf="!aadharId.valid">{{getErrorAadhar()}}</mat-error>
+      <input matInput placeholder="For e.g 012345678999" pattern="^[0-9]{10,12}$"name="aadhaarId" type="text"  ngModel={{aadhaarId}} required>
+              <mat-error >Enter the valid Aadhaar no.</mat-error>
 
     </mat-form-field>
     <mat-card-title style="text-align:left">Bank Name&emsp;
@@ -40,8 +40,8 @@
     </mat-card-content>
 
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g SBI" name="bankName" type="text" pattern="^([a-zA-Z]{3,15})$" ngModel required>
-                    <mat-error *ngIf="!bankName.valid">Please enter the Bank Name</mat-error>
+      <input matInput placeholder="For e.g SBI" name="bankName" type="text" pattern="^([a-zA-Z]{3,15})$" ngModel={{bankName}} required>
+                    <mat-error >Please enter the valid Bank Name</mat-error>
 
     </mat-form-field>
 
@@ -52,8 +52,9 @@
     <mat-card-content>Same as in the Cheque Book / Passbook / Bank Statement
     </mat-card-content>
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g Ramesh " type="text"  name="accountName" ngModel required>
-      <mat-error>Enter the Account Holder Name</mat-error>
+<input matInput placeholder="For e.g Ramesh " type="text" name="accountName" pattern="^([a-zA-Z]{3,15})$" ngModel={{accountName}} required>
+
+      <mat-error>Enter the valid Account Holder Name</mat-error>
     </mat-form-field>
 
     <mat-card-title style="text-align:left">Bank Account Number&emsp;
@@ -63,8 +64,10 @@
     <mat-card-content>Same as in the Cheque Book / Passbook / Bank Statement
     </mat-card-content>
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g 0123456789011 " type="text" maxlength="16" name="accountNumber" ngModel required>
-            <mat-error>Enter the Account Holder Number</mat-error>
+<input matInput placeholder="For e.g 0123456789011 " type="text" maxlength="16" pattern="^[0-9]{10,17}$" name="accountNumber"
+  ngModel={{accountNumber}} required>
+
+            <mat-error>Enter the valid Account Holder Number</mat-error>
 
     </mat-form-field>
 
@@ -76,8 +79,9 @@
     <mat-card-content>As per the Branch, it can be found in the checkbook.
     </mat-card-content>
     <mat-form-field class="input100">
-      <input matInput placeholder="For e.g CNRB1000 " type="text" maxlength="10" name="ifscCode" ngModel required>
-                  <mat-error>Enter the Bank ISFCcocode</mat-error>
+<input matInput placeholder="For e.g CNRB1000000 " type="text" pattern='[A-Z]{4}\d{7}' name="ifscCode" ngModel={{ifscCode}} required>
+
+                  <mat-error>Enter the valid Bank ISFCcocode</mat-error>
 
     </mat-form-field>
 

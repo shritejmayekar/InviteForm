@@ -19,11 +19,12 @@ export class EmployeeDataComponent implements OnInit {
   ];
   constructor( private router: Router, private commonService: DataService) { }
   // emailAddress = new FormControl('', [Validators.required]);
+  public employeeDataObject: any;
   emailAddress: any;
-  firstName = new FormControl('', [Validators.required]);
-  lastName = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  middleName = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  phone = new FormControl('', Validators.required);
+  firstName: any = new FormControl('', [Validators.required]);
+  lastName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  middleName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  phone: any = new FormControl('', Validators.required);
 
   // getErrorMessage() {
   //   return this.emailAddress.hasError('required') ? 'You must enter a value' :
@@ -54,11 +55,12 @@ export class EmployeeDataComponent implements OnInit {
         }
       });
     if (localStorage.getItem('employeeDetails')) {
-      this.emailAddress = JSON.parse(localStorage.getItem('employeeDetails')).emailAddress;
-      this.firstName = JSON.parse(localStorage.getItem('employeeDetails')).firstName;
-      this.middleName = JSON.parse(localStorage.getItem('employeeDetails')).middleName;
-      this.lastName = JSON.parse(localStorage.getItem('employeeDetails')).lastName;
-      this.phone = JSON.parse(localStorage.getItem('employeeDetails')).phone;
+      this.employeeDataObject = JSON.parse(localStorage.getItem('employeeDetails'));
+      this.emailAddress = this.employeeDataObject.emailAddress;
+      this.firstName = this.employeeDataObject.firstName;
+      this.middleName = this.employeeDataObject.middleName;
+      this.lastName = this.employeeDataObject.lastName;
+      this.phone = this.employeeDataObject.phone;
     } else {
       this.emailAddress = '';
       this.firstName = '';

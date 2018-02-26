@@ -24,7 +24,8 @@
 
           </span>
         </mat-card-actions>
-      </form>
+        </form>
+        
       <div id="extraQualification">
         <mat-card-title style="text-align:left;">
           <h3 style="text-align:left">Type of Qualification &emsp;
@@ -35,8 +36,8 @@
 
         <mat-form-field>
           <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel={{typeOfQualification}} required>
-            <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification.value">
-              {{ qualification.viewValue }}
+            <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification">
+              {{ qualification }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -96,7 +97,7 @@
         </mat-card-title>
 
         <mat-form-field>
-          <mat-select placeholder="Degree" name="yearOfPassing" [(value)]="selected" ngModel={{yearOfPassing}} required>
+          <mat-select placeholder="YearOfPassing" name="yearOfPassing" [(value)]="selected" ngModel={{yearOfPassing}} required>
             <mat-option *ngFor="let year of passingYear" [value]="year.value">
               {{year.viewValue }}
             </mat-option>

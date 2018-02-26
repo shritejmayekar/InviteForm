@@ -66,9 +66,9 @@
           {{gender}}
         </mat-radio-button>
       </mat-radio-group> -->
-      <mat-radio-group name="gender"  ngModel required>
-        <mat-radio-button value="male" checked name="gender" >Male</mat-radio-button>
-        <mat-radio-button value="female" name="gender">Female</mat-radio-button>
+      <mat-radio-group name="gender"  ngModel={{gender}} required>
+        <mat-radio-button value="MALE" checked name="gender" >Male</mat-radio-button>
+        <mat-radio-button value="FEMALE" name="gender">Female</mat-radio-button>
       </mat-radio-group>
       <mat-card-content>
       </mat-card-content>

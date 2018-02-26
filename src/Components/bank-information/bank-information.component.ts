@@ -34,16 +34,6 @@ export class BankInformationComponent implements OnInit {
         '';
   }
   ngOnInit() {
-    this.commonService.getService(environment.baseUrl + 'verify/' + 'ab6ecd')
-      // this.commonService.getService(environment.baseUrl + 'verify/')
-
-      .subscribe(data => {
-        console.log(data.data);
-        // console.log(data);
-        if (data.data) {
-          localStorage.setItem('bankDetails', JSON.stringify(data.data.bankDetails));
-        }
-      });
     if (localStorage.getItem('bankDetails')) {
       this.bankObject = JSON.parse(localStorage.getItem('bankDetails'));
       this.panNumber = this.bankObject.panNumber;

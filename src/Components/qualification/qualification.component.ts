@@ -21,12 +21,8 @@ export class QualificationComponent implements OnInit {
   aggregatePercentage: any;
   yearOfPassing: any;
   qualification: any;
-  qualifiactions = [
-    { value: 'Diploma', viewValue: 'Diploma' },
-    { value: 'Degree', viewValue: 'Degree' },
-    { value: 'Master', viewValue: 'Master' },
-  ];
-  hiringCities = JSON.parse(localStorage.getItem('configData')).cityData;
+  qualifiactions = JSON.parse(localStorage.getItem('configData')).qualification;
+  hiringCities = JSON.parse(localStorage.getItem('cityData')).cityData;
   passingYear = [
     { value: '1991', viewValue: '1991' },
     { value: '1992', viewValue: '1992' },
@@ -45,7 +41,7 @@ export class QualificationComponent implements OnInit {
     this.commonService.getService(environment.baseUrl + 'readConfig?configType=city')
       .subscribe(data => {
         console.log(data.data);
-        localStorage.setItem('configData', JSON.stringify(data.data));
+        localStorage.setItem('cityData', JSON.stringify(data.data));
       });
     this.dataObject = JSON.parse(localStorage.getItem('profileData'));
     this.discipline = this.dataObject.academic[0].discipline;
@@ -53,8 +49,10 @@ export class QualificationComponent implements OnInit {
     this.university = this.dataObject.academic[0].university;
     this.yearOfPassing = this.dataObject.academic[0].yearOfPassing;
     this.qualification = this.dataObject.academic[0].qualification;
-    this.typeOfQualification = this.dataObject.academic[0].typeOfQualification;
+     this.typeOfQualification = this.dataObject.academic[0].typeOfQualification;
     this.aggregatePercentage = this.dataObject.academic[0].aggregatePercentage;
+    this.academics = [this.dataObject.academic[0].typeOfQualification];
+
 
   }
   AddQualification() {

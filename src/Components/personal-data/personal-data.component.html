@@ -14,34 +14,32 @@
       </mat-card-content>
       <mat-card-content style="text-align:center">Please enter the contact Information.
       </mat-card-content>
-      <mat-card-title style="text-align:left">Date Of Birth (YYYY/MM/DD) &emsp;
+      <mat-card-title style="text-align:left">Date Of Birth (MM/DD/YYYY) &emsp;
         <span class="asterisk_input"> </span>
       </mat-card-title>
-      <mat-form-field class="input100">
-        <span>
-          <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
-          <mat-datepicker #myDatepicker></mat-datepicker>
-        </span>
-        <span>
-          <input matInput [matDatepicker]="myDatepicker">
 
-        </span>
+      <mat-form-field class="input100">
+        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dob" ngModel={{dob}} required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       </mat-form-field>
+
 
       <mat-card-title style="text-align:left">Relative' s Name &emsp;
         <span class="asterisk_input"></span>
       </mat-card-title>
 
       <mat-form-field class="input100">
-        <input matInput placeholder="Name" name="name" type="text" ngModel required>
+        <input matInput placeholder="Name" name="name" type="text" ngModel={{name}} required>
+        <mat-error>Please enter the valid Relative's Name</mat-error>
       </mat-form-field>
       <mat-card-title style="text-align:left">Realation&emsp;
         <span class="asterisk_input"> </span>
       </mat-card-title>
       <mat-form-field style="width:10em">
-        <mat-select name="relationAs" [(value)]="selected" ngModel required>
-          <mat-option *ngFor="let relation of  relationAs" [value]="relation.value">
-            {{ relation.viewValue }}
+        <mat-select name="relationAs" [(value)]="selected" ngModel={{relationAs}} required>
+          <mat-option *ngFor="let relation of  relationAsa" [value]="relation">
+            {{ relation }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -54,29 +52,32 @@
       <mat-card-content>Please Enter your Relative's or any other permananent Number
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="Mobile Number" type=" tel " pattern="[0-9]*" minlength="10" maxlength="10" name="contact" ngModel
+        <input matInput placeholder="Mobile Number" type="text" pattern="^[0-9]{10,10}$" minlength="10" maxlength="10" name="contact"
+         ngModel={{contact}}
           required>
+          <mat-error>Please enter the valid Mobile Number</mat-error>
 
       </mat-form-field>
       <mat-card-title style="text-align:left">Relative's Occupation&emsp;
       </mat-card-title>
       <mat-form-field class="input100">
-        <input matInput placeholder="Occupation" type="text" name="occupation" ngModel />
+        <input matInput placeholder="Occupation" type="text" name="occupation" ngModel={{occupation}} required/>
+        <mat-error>Please enter the valid Relative's Occupation</mat-error>
       </mat-form-field>
 
       <mat-card-title style="text-align:left">Family Income(p.a)&emsp;
       </mat-card-title>
-      <mat-radio-group name="relativeAnnualSalary" ngModel>
+      <mat-radio-group name="relativeAnnualSalary" ngModel={{relativeAnnualSalary}} required>
         <ul style="padding:5px">
           <li>
-            <mat-radio-button value="0-5" checked name="gender">0-5 Lacs</mat-radio-button>
+            <mat-radio-button value="0-5 lakhs" checked name="gender">0-5 Lacs</mat-radio-button>
 
           </li>
           <li>
-            <mat-radio-button value="5-6" name="gender">5-6 Lacs</mat-radio-button>
+            <mat-radio-button value="5-6 lakhs" name="gender">5-6 Lacs</mat-radio-button>
           </li>
           <li>
-            <mat-radio-button value=">10" name="gender">>10 Lacs</mat-radio-button>
+            <mat-radio-button value=">10 lakhs" name="gender">>10 Lacs</mat-radio-button>
           </li>
         </ul>
 
@@ -85,14 +86,18 @@
       <mat-card-title style="text-align:left">Permanent Address&emsp;
       </mat-card-title>
       <mat-form-field class="input100">
-        <input matInput placeholder="Enter the address" type="text" name="address" ngModel />
+        <textarea matInput placeholder="Enter the address" type="text" name="permanentAddress" ngModel={{permanentAddress}} required></textarea>
       </mat-form-field>
+      <mat-card-title style="text-align:left">
+            <mat-checkbox [(ngModel)]="checked" (click)="toggle(this.ngForm)" name="sameAddress">Same as Above</mat-checkbox>
+
+      </mat-card-title>
 
       <mat-card-title style="text-align:left">Current Address&emsp;
         <span class="asterisk_input"></span>
       </mat-card-title>
       <mat-form-field class="input100">
-        <input matInput placeholder="Enter the address" type="text" name="permanentAddress" ngModel required />
+        <textarea matInput placeholder="Enter the address" type="text"  name="address" ngModel={{address}} required ></textarea>
       </mat-form-field>
       <mat-card-actions>
         <span style="float:left">

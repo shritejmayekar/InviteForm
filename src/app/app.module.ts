@@ -9,7 +9,7 @@ import { EmployeeDataComponent } from '../Components/employee-data/employee-data
 import { BankInformationComponent } from '../Components/bank-information/bank-information.component';
 import { QualificationComponent } from '../Components/qualification/qualification.component';
 import { PersonalDataComponent } from '../Components/personal-data/personal-data.component';
-import { ProfileUploadComponent } from '../Components/profile-upload/profile-upload.component';
+import { ProfileUploadComponent, DialogOverviewExampleComponent } from '../Components/profile-upload/profile-upload.component';
 import { ThankYouMsgComponent } from '../Components/thank-you-msg/thank-you-msg.component';
 
 import { FormsModule } from '@angular/forms';
@@ -36,21 +36,30 @@ import { DataService } from './data.service';
 import { MatDatepickerModule, MatNativeDateModule, DateAdapter } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsService } from './forms.service';
+import { HomeComponent } from '../Components/home/home.component';
+import { SocialDetailsComponent } from '../Components/social-details/social-details.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DialogOverviewExampleComponent,
     EmployeeDataComponent,
     BankInformationComponent,
     QualificationComponent,
     PersonalDataComponent,
     ProfileUploadComponent,
     ThankYouMsgComponent,
+    HomeComponent,
+    SocialDetailsComponent,
 
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
+    MatGridListModule,
     MatCheckboxModule,
     FormsModule,
     MatInputModule,

@@ -9,3 +9,10 @@ mat-card {
      border-radius: 10px;
 
 }
+.cropcircle {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  background: #eee no-repeat center;
+  background-size: cover;
+}

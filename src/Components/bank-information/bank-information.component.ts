@@ -43,15 +43,6 @@ export class BankInformationComponent implements OnInit {
       this.accountNumber = this.bankObject.accountNumber;
       this.ifscCode = this.bankObject.ifscCode;
 
-    } else {
-      this.panNumber = '';
-      this.aadhaarId = '';
-      this.bankName = '';
-      this.accountName = '';
-      this.accountNumber = '';
-      this.ifscCode = '';
-
-
     }
   }
   onSubmit(form: NgForm) {
@@ -64,7 +55,9 @@ export class BankInformationComponent implements OnInit {
       bankDetails: form.value
     };
 
-    this.commonService.postService(environment.baseUrl + 'addEmployeeData?' + 'formSection=bankDetails&employeeToken=ab6ecd',
+    this.commonService.postService(environment.baseUrl + 'addEmployeeData?' +
+    'formSection=bankDetails&employeeToken='+
+      JSON.parse(localStorage.getItem('EmployeeToken')),
       this.datas)
       .subscribe(data => {
         console.log(data);

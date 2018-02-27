@@ -24,29 +24,28 @@
 
           </span>
         </mat-card-actions>
-        </form>
-        
-      <div id="extraQualification">
-        <mat-card-title style="text-align:left;">
-          <h3 style="text-align:left">Type of Qualification &emsp;
-            <span class="asterisk_input"> </span>
-          </h3>
+      </form>
 
-        </mat-card-title>
+      <div id="extraQualification" *ngFor="let x of counter">
+          <mat-card-title style="text-align:left;">
+            <h3 style="text-align:left">Type of Qualification &emsp;
+              <span class="asterisk_input"> </span>
+            </h3>
 
-        <mat-form-field>
-          <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel={{typeOfQualification}} required>
-            <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification">
-              {{ qualification }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-card-title style="text-align:left;">
-          <h3 style="text-align:left">Qualification &emsp;
-            <span class="asterisk_input"> </span>
-          </h3>
+          </mat-card-title>
 
-        </mat-card-title>
+          <mat-form-field>
+            <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel={{typeOfQualification}} required>
+              <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification">
+                {{ qualification }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-card-title style="text-align:left;">
+            <h3 style="text-align:left">Qualification &emsp;
+              <span class="asterisk_input"> </span>
+            </h3>
+            </mat-card-title>
         <mat-form-field class="input100">
           <input matInput placeholder="For e.g B.E" name="qualification" type="text" pattern="^([a-zA-Z.]{3,15})$" ngModel={{qualification}}
             required>
@@ -98,8 +97,8 @@
 
         <mat-form-field>
           <mat-select placeholder="YearOfPassing" name="yearOfPassing" [(value)]="selected" ngModel={{yearOfPassing}} required>
-            <mat-option *ngFor="let year of passingYear" [value]="year.value">
-              {{year.viewValue }}
+            <mat-option *ngFor="let year of passingYear" [value]="year">
+              {{year}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -115,51 +114,59 @@
             required>
           <mat-error>Enter the valid Percent</mat-error>
         </mat-form-field>
+        <mat-card-content>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+    </div>
 
+      <div *ngIf="show()">
+        <mat-card-title style="text-align:left">Training Details&emsp;
+        </mat-card-title>
+
+        <mat-card-title style="text-align:left;">
+          <h3 style="text-align:left">Training Institute</h3> &emsp;
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel={{this.dataObject.training[0].institute}} required>
+          <mat-error>Please enter name of Institute</mat-error>
+        </mat-form-field>
+
+        <mat-card-title style="text-align:left">
+          <h3 style="text-align:left">Please enter trainning duration in months&emsp;</h3>
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel={{this.dataObject.training[0].duration}} required>
+
+        </mat-form-field>
+        <mat-card-title style="text-align:left">
+          <h3 style="text-align:left">Please enter all your trainings&emsp;</h3>
+        </mat-card-title>
+
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel={{this.dataObject.training[0].trainingIn}} required>
+          <mat-error>Please enter the Bank Name</mat-error>
+
+        </mat-form-field>
+        <mat-card-title style="text-align:left">
+          <h3 style="text-align:left">Hiring City&emsp;</h3>
+
+        </mat-card-title>
+        <mat-form-field style="width:10em">
+          <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel={{this.dataObject.training[0].location}} required>
+            <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity">
+              {{ hiringCity }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-card-title style="text-align:left">
+          <h3 style="text-align:left">Hiring Place&emsp;</h3>
+
+        </mat-card-title>
+        <mat-form-field class="input100">
+          <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel={{this.dataObject.training[0].hiringPlace}} required>
+
+        </mat-form-field>
       </div>
-      <!-- <mat-card-title style="text-align:left">Training Details&emsp;
-      </mat-card-title>
-      <div>
-      <mat-card-title style="text-align:left;"><h3 style="text-align:left">Training Institute</h3>  &emsp;
-      </mat-card-title>
-      <mat-form-field class="input100">
-        <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel required>
-        <mat-error >Please enter name of Institute</mat-error>
-      </mat-form-field>
-      
-      <mat-card-title style="text-align:left"><h3 style="text-align:left">Please enter trainning duration in months&emsp;</h3>
-      </mat-card-title>
-      <mat-form-field class="input100">
-        <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel required>
-
-      </mat-form-field>
-      <mat-card-title style="text-align:left"><h3 style="text-align:left">Please enter all your trainings&emsp;</h3>
-      </mat-card-title>
-  
-      <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel required>
-        <mat-error >Please enter the Bank Name</mat-error>
-
-      </mat-form-field>
-      <mat-card-title style="text-align:left"><h3 style="text-align:left">Hiring City&emsp;</h3>
-      
-      </mat-card-title>
-<mat-form-field style="width:10em">
-  <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel required>
-    <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity">
-      {{ hiringCity }}
-    </mat-option>
-    </mat-select>
-</mat-form-field>
-<mat-card-title style="text-align:left">
-  <h3 style="text-align:left">Hiring Place&emsp;</h3>
-
-</mat-card-title>
-<mat-form-field class="input100">
-  <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel required>
-
-</mat-form-field> -->
-      <!-- </div> -->
       <mat-card-actions>
         <span style="float:left">
           <button mat-raised-button color="primary" (click)="previous()">Previous</button>

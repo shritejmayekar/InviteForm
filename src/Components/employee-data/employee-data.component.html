@@ -22,7 +22,7 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Ram" name="firstName" type="text" ngModel={{firstName}} required>
+        <input matInput placeholder="For e.g Ram" name="firstName" type="text" ngModel={{employeeDataObject.firstName}} required>
         <mat-error *ngIf="firstName.invalid">Please enter the First Name</mat-error>
 
       </mat-form-field>
@@ -31,7 +31,7 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Mohan" name="middleName" type="text" ngModel={{middleName}} required>
+        <input matInput placeholder="For e.g Mohan" name="middleName" type="text" ngModel={{employeeDataObject.middleName}} required>
         <mat-error *ngIf="middleName.invalid">Please enter the Middle Name</mat-error>
       </mat-form-field>
       <mat-card-title style="text-align:left">Last Name&emsp;
@@ -41,7 +41,7 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Sharma" name="lastName" ngModel={{lastName}} required>
+        <input matInput placeholder="For e.g Sharma" name="lastName" ngModel={{employeeDataObject.lastName}} required>
         <mat-error *ngIf="lastName.invalid">Please enter last Name</mat-error>
 
 
@@ -55,7 +55,7 @@
       </mat-card-content>
       <mat-form-field class="input100">
         <input matInput placeholder="For e.g 9870000000" type="text " pattern="[0-9]*" minlength="10" maxlength="10" name="phone"
-          ngModel={{phone}} required>
+          ngModel={{employeeDataObject.phone}} required>
       </mat-form-field>
       <mat-card-title style="text-align:left">Gender&emsp;
         <span class="asterisk_input"> </span>
@@ -66,7 +66,7 @@
           {{gender}}
         </mat-radio-button>
       </mat-radio-group> -->
-      <mat-radio-group name="gender"  ngModel={{gender}} required>
+      <mat-radio-group name="gender"  ngModel={{employeeDataObject.gender}} required>
         <mat-radio-button value="MALE" checked name="gender" >Male</mat-radio-button>
         <mat-radio-button value="FEMALE" name="gender">Female</mat-radio-button>
       </mat-radio-group>
@@ -77,7 +77,7 @@
       </mat-card-title>
       <mat-form-field class="input100">
         <input  matInput placeholder="Enter your email" type="email" value={{emailAddress}} name="emailAddress" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-         ngModel={{emailAddress}} readonly />
+         ngModel={{employeeDataObject.emailAddress}} readonly />
         <!-- <mat-error *ngIf="emailAddress.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
 

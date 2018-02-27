@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { DataService } from '../../app/data.service';
 import { environment } from '../../environments/environment';
-
+import { FormsService } from '../../app/forms.service';
 @Component({
   selector: 'app-personal-data',
   templateUrl: './personal-data.component.html',
@@ -14,37 +14,39 @@ export class PersonalDataComponent implements OnInit {
   public datas: any;
   public dataObject: any;
   public toggleElment: Boolean = false;
+  name: any;
+  contact: any;
+  occupation: any;
+  relationAs: any;
+  address: any;
+  permanentAddress: any;
+  dob: any;
+  relativeAnnualSalary: any;
   constructor(private location: Location, private router: Router,
     private commonService: DataService) { }
   relationAsa = JSON.parse(localStorage.getItem('configData')).relation_type;
   ngOnInit() {
     this.dataObject = JSON.parse(localStorage.getItem('personalDetails'));
-    console.log(this.dataObject.employeeRelative[0].name);
-    this.name = this.dataObject.employeeRelative[0].name;
-    this.contact = this.dataObject.employeeRelative[0].contact;
-    this.occupation = this.dataObject.employeeRelative[0].occupation;
-    this.relationAs = this.dataObject.employeeRelative[0].relationAs;
-    this.address = this.dataObject.address;
-    this.permanentAddress = this.dataObject.permanentAddress;
-    this.dob = this.dataObject.dob;
-    this.relativeAnnualSalary = this.dataObject.employeeRelative[0].relativeAnnualSalary;
+    if (this.dataObject) {
+    for (let i = 0; i <= this.dataObject.employeeRelative.length; i++) {
+      this.name = this.dataObject.employeeRelative[i].name;
+      this.contact = this.dataObject.employeeRelative[i].contact;
+      this.occupation = this.dataObject.employeeRelative[i].occupation;
+      this.relationAs = this.dataObject.employeeRelative[i].relationAs;
+      this.address = this.dataObject.address;
+      this.permanentAddress = this.dataObject.permanentAddress;
+      this.dob = this.dataObject.dob;
+      this.relativeAnnualSalary = this.dataObject.employeeRelative[i].relativeAnnualSalary;
+    }
   }
-//  toggle(f) {
-//    console.log(f);
-//    if (NgForm.checked === true) {
-//      f.address.value = f.permanentAddress.value;
-//    }
-//     // this.toggleElment = !this.toggleElment;
-//     // if (this.toggleElment) {
-//     //   console.log(log);
-
-//     // } else {
-//     //   this.address = '';
-//     // }
-//   }
+  }
   onSubmit(form: NgForm) {
     if (form.invalid) {
       return;
+    }
+
+    if (form.value.sameAddress) {
+      form.value.address = form.value.permanentAddress;
     }
     this.datas = {
       'personalDetails': {
@@ -61,10 +63,11 @@ export class PersonalDataComponent implements OnInit {
 
       }
     };
-    //  console.log(form.value);
-    console.log(this.datas);
-    localStorage.setItem('personalDetails', JSON.stringify(this.datas));
-    this.commonService.postService(environment.baseUrl + 'addEmployeeData?' + 'formSection=personalDetails&employeeToken=ab6ecd',
+    console.log(this.datas.personalDetails);
+    localStorage.setItem('personalDetails', JSON.stringify(this.datas.personalDetails));
+    this.commonService.postService(environment.baseUrl + 'addEmployeeData?' +
+      'formSection=personalDetails&employeeToken=' +
+      JSON.parse(localStorage.getItem('EmployeeToken')),
       this.datas)
       .subscribe(data => {
         console.log(data);

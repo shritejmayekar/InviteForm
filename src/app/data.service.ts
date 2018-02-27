@@ -9,13 +9,13 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  postService(url: string, data: string) {
+  postService(url: string, data: string, option ?) {
     console.log(url + '\n' + data);
     // return this.http.post('login',data).map(res=>res.json());
     return this.http.post(url, data)
       .map(res => res);
   }
-  getService(url: string) {
+  getService(url: string, option ?) {
     return this.http.get(url)
       .map(res => res);
   }

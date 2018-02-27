@@ -5,9 +5,19 @@ import { BankInformationComponent } from '../Components/bank-information/bank-in
 import { QualificationComponent } from '../Components/qualification/qualification.component';
 import { PersonalDataComponent } from '../Components/personal-data/personal-data.component';
 import { ProfileUploadComponent } from '../Components/profile-upload/profile-upload.component';
+import { HomeComponent } from '../Components/home/home.component';
+import { SocialDetailsComponent } from '../Components/social-details/social-details.component';
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'socialDetails',
+    component: SocialDetailsComponent
+  },
+  {
+    path: 'employeeData/:token',
     component: EmployeeDataComponent
   },
   {

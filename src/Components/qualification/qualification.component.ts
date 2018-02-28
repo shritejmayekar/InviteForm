@@ -33,17 +33,17 @@ export class QualificationComponent implements OnInit {
       this.passingYear.push(indexs);
     }
     this.dataObject = JSON.parse(localStorage.getItem('profileData'));
-    for (let i = 0; i <= this.dataObject.academic.length; i++) {
-      this.discipline = this.dataObject.academic[i].discipline;
-      this.college = this.dataObject.academic[i].college;
-      this.university = this.dataObject.academic[i].university;
-      this.yearOfPassing = this.dataObject.academic[i].yearOfPassing;
-      this.qualification = this.dataObject.academic[i].qualification;
-      this.typeOfQualification = this.dataObject.academic[i].typeOfQualification;
-      this.aggregatePercentage = this.dataObject.academic[i].aggregatePercentage;
-      this.academics = [this.dataObject.academic[i].typeOfQualification];
-      console.log(i);
-    }
+    // for (let i = 0; i <= this.dataObject.academic.length; i++) {
+    //   this.discipline = this.dataObject.academic[i].discipline;
+    //   this.college = this.dataObject.academic[i].college;
+    //   this.university = this.dataObject.academic[i].university;
+    //   this.yearOfPassing = this.dataObject.academic[i].yearOfPassing;
+    //   this.qualification = this.dataObject.academic[i].qualification;
+    //   this.typeOfQualification = this.dataObject.academic[i].typeOfQualification;
+    //   this.aggregatePercentage = this.dataObject.academic[i].aggregatePercentage;
+    //   this.academics = [this.dataObject.academic[i].typeOfQualification];
+    //   console.log(i);
+    // }
     console.log(this.dataObject);
 
   }
@@ -57,22 +57,27 @@ export class QualificationComponent implements OnInit {
 
   AddQualification() {
     $('#extraQualification').show();
-    this.counter.push(1);
+    this.dataObject.academic.push(1);
     // this.counter++;
     // this.quailifactionForm = this.counter;
   }
   HideQualification() {
     $('#extraQualification').hide();
     this.counter.pop();
+    this.dataObject.academic.pop();
+
   }
   onSubmit(form: NgForm) {
     if (form.invalid) {
       return;
     }
     console.log(form.value);
+   // console.log(JSON.parse(form.value.typeOfQualification));
+
     form.value.id = 'choice1';
     form.value.finalYearPercentageQualification = '';
     form.value.finalYearPercentage = '0';
+    // console.log(form.value);
     this.dataObject = {
       'profileDetails': {
         'academic': [form.value],

@@ -12,16 +12,16 @@
 
   
 
-<img [src]="croppedImage" class="cropcircle" />
+<!-- <img [src]="croppedImage" class="cropcircle" /> -->
+    <img [src]="dialogCrop" class="cropcircle" />
 
-    <input type="file" (change)="fileChangeEvent($event)" />
-        <button mat-raised-button (click)="openDialog()">Pick one</button>
-          <i>{{animal}}</i>
-    <mat-card class="smallWidth">
+    <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+        <button mat-raised-button (click)="openDialog()" >Pick one</button>
+    <!-- <mat-card class="smallWidth">
       <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
         format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
     
-    </mat-card>
+    </mat-card> -->
 
 
   </mat-card>

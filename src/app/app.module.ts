@@ -40,6 +40,7 @@ import { HomeComponent } from '../Components/home/home.component';
 import { SocialDetailsComponent } from '../Components/social-details/social-details.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     SocialDetailsComponent,
 
   ],
+  entryComponents: [DialogOverviewExampleComponent],
   imports: [
     BrowserModule,
     MatDialogModule,

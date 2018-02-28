@@ -2,7 +2,40 @@
 
 
   <mat-card>
-    
+
+    <form #socialData="ngForm" (ngSubmit)="onSubmit(socialData)">
+      <mat-card-title>
+        <span class="contact100-form-title">
+          Social Data
+        </span>
+      </mat-card-title>
+      <mat-card-content>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+     
+          <mat-card-title style="text-align:left">
+            57% of recruiters will not hire you if you are inactive on social media..
+
+          </mat-card-title>
+        
+          <mat-card-title style="text-align:left;font-size:16px">
+            We will showcase your work on BridgeLabz' social media accounts. You get visibility among friends and potential employers
+
+          </mat-card-title>
+          <mat-card-title style="text-align:left"> 
+             Our facebook profile..
+          </mat-card-title >
+          <a href="https://www.facebook.com/bridgelabz/" data-show-faces="true" data-share="true">
+                  <img src="https://www.hqmenshaircuts.com/wp-content/uploads/2017/05/like-us-on-facebook-button.png" width="200px" height="100px"
+                  />
+
+          </a>
+      <mat-card-actions>
+        <span style="float:right">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!socialData.form.valid">Next</button>
+        </span>
+      </mat-card-actions>
+    </form>
   </mat-card>
 
 </div>

@@ -6,7 +6,8 @@ import { environment } from '../../environments/environment';
 import {FormsService} from '../../app/forms.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-employee-data',
   templateUrl: './employee-data.component.html',
@@ -35,8 +36,24 @@ export class EmployeeDataComponent implements OnInit {
   gender: any;
 
   ngOnInit() {
-        this.formService.getCongfigData();
+     this.formService.getCongfigData();
+    this.commonService.getService(environment.baseUrl + 'verify/' + JSON.parse(localStorage.getItem('EmployeeToken')))
+      // this.commonService.getService(environment.baseUrl + 'verify/')
+
+      .subscribe(data => {
+        console.log(data);
+        if (data.data) {
+          localStorage.setItem('bankDetails', JSON.stringify(data.data.bankDetails));
+          localStorage.setItem('employeeDetails', JSON.stringify(data.data.employeeDetails));
+          localStorage.setItem('employeeObjectId', JSON.stringify(data.data.employeeObjectId));
+          localStorage.setItem('inviteFormDetails', JSON.stringify(data.data.inviteFormDetails));
+          localStorage.setItem('personalDetails', JSON.stringify(data.data.personalDetails));
+          localStorage.setItem('profileData', JSON.stringify(data.data.profileDetails));
+          localStorage.setItem('profileDetails', JSON.stringify(data.data.profileDetails));
+          localStorage.setItem('profileImageDetails', JSON.stringify(data.data.profileImageDetails));
+        }
         this.setData();
+      });
   }
   setData() {
     if (localStorage.getItem('employeeDetails')) {

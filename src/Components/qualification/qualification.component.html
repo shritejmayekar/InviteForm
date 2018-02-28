@@ -26,16 +26,15 @@
         </mat-card-actions>
       </form>
 
-      <div id="extraQualification" *ngFor="let x of counter">
+      <div id="extraQualification" *ngFor="let x of this.dataObject.academic;let i = index">
           <mat-card-title style="text-align:left;">
             <h3 style="text-align:left">Type of Qualification &emsp;
               <span class="asterisk_input"> </span>
             </h3>
 
           </mat-card-title>
-
           <mat-form-field>
-            <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel={{typeOfQualification}} required>
+            <mat-select placeholder="Degree" name="typeOfQualification" [(value)]="selected" ngModel='{{this.dataObject.academic[i].typeOfQualification}}' required>
               <mat-option *ngFor="let qualification  of qualifiactions" [value]="qualification">
                 {{ qualification }}
               </mat-option>
@@ -47,7 +46,7 @@
             </h3>
             </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g B.E" name="qualification" type="text" pattern="^([a-zA-Z.]{3,15})$" ngModel={{qualification}}
+          <input matInput placeholder="For e.g B.E" name="qualification" type="text" pattern="^([a-zA-Z.]{3,15})$" ngModel={{this.dataObject.academic[i].qualification}}
             required>
           <mat-error>Enter the valid Qualification</mat-error>
         </mat-form-field>
@@ -59,7 +58,7 @@
 
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g Computer Science" name="discipline" type="text" pattern="^([a-zA-Z\s]{3,22})$" ngModel={{discipline}}
+          <input matInput placeholder="For e.g Computer Science" name="discipline" type="text" pattern="^([a-zA-Z\s]{3,22})$" ngModel={{this.dataObject.academic[i].discipline}}
             required>
           <mat-error>Enter the valid discipline</mat-error>
         </mat-form-field>
@@ -73,7 +72,7 @@
         </mat-card-title>
         <mat-form-field class="input100">
           <input matInput placeholder="For e.g D.Y Patil Engineering nerul" name="college" type="text" pattern="^([a-zA-Z\s.,]{3,40})$"
-            ngModel={{college}} required>
+            ngModel={{this.dataObject.academic[i].college}} required>
           <mat-error>Enter the valid college Name</mat-error>
         </mat-form-field>
 
@@ -84,7 +83,7 @@
 
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g University Of Mumbai" name="university" type="text" ngModel={{university}} required>
+          <input matInput placeholder="For e.g University Of Mumbai" name="university" type="text" ngModel={{this.dataObject.academic[i].university}} required>
           <mat-error>Enter the valid University Name</mat-error>
         </mat-form-field>
 
@@ -96,7 +95,7 @@
         </mat-card-title>
 
         <mat-form-field>
-          <mat-select placeholder="YearOfPassing" name="yearOfPassing" [(value)]="selected" ngModel={{yearOfPassing}} required>
+          <mat-select placeholder="YearOfPassing" name="yearOfPassing" [(value)]="selected" ngModel={{this.dataObject.academic[i].yearOfPassing}} required>
             <mat-option *ngFor="let year of passingYear" [value]="year">
               {{year}}
             </mat-option>
@@ -110,7 +109,7 @@
 
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g 80" name="aggregatePercentage" type="text" pattern="^[0-9]{2,2}$" ngModel={{aggregatePercentage}}
+          <input matInput placeholder="For e.g 80" name="aggregatePercentage" type="text" pattern="^[0-9]{2,2}$" ngModel={{this.dataObject.academic[i].aggregatePercentage}}
             required>
           <mat-error>Enter the valid Percent</mat-error>
         </mat-form-field>
@@ -127,7 +126,7 @@
           <h3 style="text-align:left">Training Institute</h3> &emsp;
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel={{this.dataObject.training[0].institute}} required>
+          <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel={{this.dataObject.training[i].institute}} required>
           <mat-error>Please enter name of Institute</mat-error>
         </mat-form-field>
 
@@ -135,7 +134,7 @@
           <h3 style="text-align:left">Please enter trainning duration in months&emsp;</h3>
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel={{this.dataObject.training[0].duration}} required>
+          <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel={{this.dataObject.training[i].duration}} required>
 
         </mat-form-field>
         <mat-card-title style="text-align:left">
@@ -143,7 +142,7 @@
         </mat-card-title>
 
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel={{this.dataObject.training[0].trainingIn}} required>
+          <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel={{this.dataObject.training[i].trainingIn}} required>
           <mat-error>Please enter the Bank Name</mat-error>
 
         </mat-form-field>
@@ -152,7 +151,7 @@
 
         </mat-card-title>
         <mat-form-field style="width:10em">
-          <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel={{this.dataObject.training[0].location}} required>
+          <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel={{this.dataObject.training[i].location}} required>
             <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity">
               {{ hiringCity }}
             </mat-option>
@@ -163,7 +162,7 @@
 
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel={{this.dataObject.training[0].hiringPlace}} required>
+          <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel={{this.dataObject.training[i].hiringPlace}} required>
 
         </mat-form-field>
       </div>

@@ -27,6 +27,7 @@
     "angular2-datepicker": "^1.0.5",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
+    "materialize-social": "^1.0.3",
     "ngx-image-cropper": "^0.1.24",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

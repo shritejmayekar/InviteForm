@@ -17,10 +17,10 @@
       <mat-card-title style="text-align:left">Date Of Birth (MM/DD/YYYY) &emsp;
         <span class="asterisk_input"> </span>
       </mat-card-title>
-
+      <div *ngFor="let data of this.dataObject.employeeRelative;let i=index">
       <mat-form-field class="input100">
         <mat-datepicker #picker></mat-datepicker>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dob" ngModel={{dob}} required>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="dob" ngModel={{this.dataObject.dob}} required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       </mat-form-field>
 
@@ -30,14 +30,14 @@
       </mat-card-title>
 
       <mat-form-field class="input100">
-        <input matInput placeholder="Name" name="name" type="text" ngModel={{name}} required>
+        <input matInput placeholder="Name" name="name" type="text" ngModel={{this.dataObject.employeeRelative[i].name}} required>
         <mat-error>Please enter the valid Relative's Name</mat-error>
       </mat-form-field>
       <mat-card-title style="text-align:left">Realation&emsp;
         <span class="asterisk_input"> </span>
       </mat-card-title>
       <mat-form-field style="width:10em">
-        <mat-select name="relationAs" [(value)]="selected" ngModel={{relationAs}} required>
+        <mat-select name="relationAs" [(value)]="selected" ngModel={{this.dataObject.employeeRelative[i].relationAs}} required>
           <mat-option *ngFor="let relation of  relationAsa" [value]="relation">
             {{ relation }}
           </mat-option>
@@ -53,7 +53,7 @@
       </mat-card-content>
       <mat-form-field class="input100">
         <input matInput placeholder="Mobile Number" type="text" pattern="^[0-9]{10,10}$" minlength="10" maxlength="10" name="contact"
-         ngModel={{contact}}
+         ngModel={{this.dataObject.employeeRelative[i].contact}}
           required>
           <mat-error>Please enter the valid Mobile Number</mat-error>
 
@@ -61,13 +61,13 @@
       <mat-card-title style="text-align:left">Relative's Occupation&emsp;
       </mat-card-title>
       <mat-form-field class="input100">
-        <input matInput placeholder="Occupation" type="text" name="occupation" ngModel={{occupation}} required/>
+        <input matInput placeholder="Occupation" type="text" name="occupation" ngModel={{this.dataObject.employeeRelative[i].occupation}} required/>
         <mat-error>Please enter the valid Relative's Occupation</mat-error>
       </mat-form-field>
 
       <mat-card-title style="text-align:left">Family Income(p.a)&emsp;
       </mat-card-title>
-      <mat-radio-group name="relativeAnnualSalary" ngModel={{relativeAnnualSalary}} required>
+      <mat-radio-group name="relativeAnnualSalary" ngModel={{this.dataObject.employeeRelative[i].relativeAnnualSalary}} required>
         <ul style="padding:5px">
           <li>
             <mat-radio-button value="0-5 lakhs" checked name="gender">0-5 Lacs</mat-radio-button>
@@ -86,7 +86,7 @@
       <mat-card-title style="text-align:left">Permanent Address&emsp;
       </mat-card-title>
       <mat-form-field class="input100">
-        <textarea matInput placeholder="Enter the address" type="text" name="permanentAddress" ngModel={{permanentAddress}} required></textarea>
+        <textarea matInput placeholder="Enter the address" type="text" name="permanentAddress" ngModel={{this.dataObject.permanentAddress}} required></textarea>
       </mat-form-field>
       <mat-card-title style="text-align:left">
             <mat-checkbox [(ngModel)]="checked"  name="sameAddress">Same as Above</mat-checkbox>
@@ -97,7 +97,7 @@
         <span class="asterisk_input"></span>
       </mat-card-title>
       <mat-form-field class="input100"  *ngIf="!checked">
-        <textarea matInput placeholder="Enter the address" type="text"  name="address" ngModel={{address}} required ></textarea>
+        <textarea matInput placeholder="Enter the address" type="text"  name="address" ngModel={{this.dataObject.address}} required ></textarea>
       </mat-form-field>
       <mat-card-actions>
         <span style="float:left">
@@ -108,6 +108,7 @@
 
         </span>
       </mat-card-actions>
+      </div>
     </form>
   </mat-card>
 

@@ -29,13 +29,14 @@ export class EmployeeDataComponent implements OnInit {
   }
   public employeeDataObject: any;
   emailAddress: any;
-  firstName: any = new FormControl('', [Validators.required]);
+  firstName: any = new FormControl('', [Validators.required, Validators.pattern('[A-Z]{5}\d{4}[A-Z]{1}')]);
   lastName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
   middleName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
   phone: any = new FormControl('', Validators.required);
   gender: any;
 
   ngOnInit() {
+    $('#progress').show();
      this.formService.getCongfigData();
     this.commonService.getService(environment.baseUrl + 'verify/' + JSON.parse(localStorage.getItem('EmployeeToken')))
       // this.commonService.getService(environment.baseUrl + 'verify/')
@@ -59,7 +60,6 @@ export class EmployeeDataComponent implements OnInit {
     if (localStorage.getItem('employeeDetails')) {
       this.employeeDataObject = JSON.parse(localStorage.getItem('employeeDetails'));
       // this.activities$ = this.formService.loadLocalData;
-      console.log(this.activities$);
     } else {
       this.emailAddress = '';
       this.firstName = '';
@@ -67,6 +67,7 @@ export class EmployeeDataComponent implements OnInit {
       this.lastName = '';
       this.phone = '';
     }
+    $('#progress').hide();
   }
 
   onSubmit(form: NgForm) {
@@ -90,7 +91,7 @@ export class EmployeeDataComponent implements OnInit {
 
   }
   onDestroy() {
-    this.Subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 

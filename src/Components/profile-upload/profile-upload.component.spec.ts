@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DataService } from '../app/data.service';
 
 import { ProfileUploadComponent } from './profile-upload.component';
 

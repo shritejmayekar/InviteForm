@@ -1,9 +1,11 @@
 <div class="container-contact100">
 
+     
 
   <mat-card>
 
     <form #employeeData="ngForm" (ngSubmit)="onSubmit(employeeData)">
+
       <mat-card-title>
         <span class="contact100-form-title">
           Employee Data
@@ -11,6 +13,7 @@
       </mat-card-title>
       <mat-card-content>
         <mat-divider></mat-divider>
+        <mat-progress-bar mode="indeterminate" id="progress"></mat-progress-bar>
       </mat-card-content>
 
 
@@ -61,11 +64,6 @@
         <span class="asterisk_input"> </span>
 
       </mat-card-title>
-      <!-- <mat-radio-group [(ngModel)]="gender" name="gender">
-        <mat-radio-button *ngFor="let gender of genders" [value]="gender">
-          {{gender}}
-        </mat-radio-button>
-      </mat-radio-group> -->
       <mat-radio-group name="gender"  ngModel={{employeeDataObject.gender}} required>
         <mat-radio-button value="MALE" checked name="gender" >Male</mat-radio-button>
         <mat-radio-button value="FEMALE" name="gender">Female</mat-radio-button>
@@ -78,7 +76,6 @@
       <mat-form-field class="input100">
         <input  matInput placeholder="Enter your email" type="email" value={{emailAddress}} name="emailAddress" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
          ngModel={{employeeDataObject.emailAddress}} readonly />
-        <!-- <mat-error *ngIf="emailAddress.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
 
       <mat-card-actions>
@@ -92,71 +89,3 @@
 </div>
 
 
-
-<!--
-	<div class="container-contact100">
-		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
-				<span class="contact100-form-title">
-					Say Hello!
-				</span>
-
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Your Name</span>
-					<input class="input100" type="text" name="name" placeholder="Enter your name">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<span class="label-input100">Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter your email addess">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Needed Services</span>
-					<div>
-						<select class="selection-2" name="service">
-							<option>Choose Services</option>
-							<option>Online Store</option>
-							<option>eCommerce Bussiness</option>
-							<option>UI/UX Design</option>
-							<option>Online Services</option>
-						</select>
-					</div>
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Budget</span>
-					<div>
-						<select class="selection-2" name="budget">
-							<option>Select Budget</option>
-							<option>1500 $</option>
-							<option>2000 $</option>
-							<option>2500 $</option>
-						</select>
-					</div>
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<span class="label-input100">Message</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="container-contact100-form-btn">
-					<div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn">
-							<span>
-								Submit
-								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-							</span>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div> -->

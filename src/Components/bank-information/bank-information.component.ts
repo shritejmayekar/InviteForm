@@ -56,7 +56,7 @@ export class BankInformationComponent implements OnInit {
     };
 
     this.commonService.postService(environment.baseUrl + 'addEmployeeData?' +
-    'formSection=bankDetails&employeeToken='+
+    'formSection=bankDetails&employeeToken=' +
       JSON.parse(localStorage.getItem('EmployeeToken')),
       this.datas)
       .subscribe(data => {

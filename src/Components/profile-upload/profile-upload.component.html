@@ -9,22 +9,17 @@
       <mat-divider></mat-divider>
 
     </mat-card-content>
-
-  
-
-<!-- <img [src]="croppedImage" class="cropcircle" /> -->
-    <img [src]="dialogCrop" class="cropcircle" />
-
-    <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
-        <button mat-raised-button (click)="openDialog()" >Pick one</button>
-    <!-- <mat-card class="smallWidth">
-      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
-        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-    
-    </mat-card> -->
-
-
+    <img [src]="dialogCrop" class="cropcircle" (click)="openDialog()" />
+    <mat-card-actions>
+      <span style="float:left">
+        <button mat-raised-button color="primary" (click)="previous()">Previous</button>
+      </span>
+      <span style="float:right">
+        <button mat-raised-button color="green" (click)="openDialog()">Edit Image</button>
+      </span>
+      <span style="float:right">
+        <button mat-raised-button color="green" (click)="profilePic()">Submit</button>
+      </span>
+    </mat-card-actions>
   </mat-card>
-
-<a routerLink="/socialDetails">socialDetails</a>
 </div>

@@ -25,17 +25,40 @@
           <mat-card-title style="text-align:left"> 
              Our facebook profile..
           </mat-card-title >
-          <a href="https://www.facebook.com/bridgelabz/" data-show-faces="true" data-share="true">
-                  <img src="https://www.hqmenshaircuts.com/wp-content/uploads/2017/05/like-us-on-facebook-button.png" width="200px" height="100px"
-                  />
-
-          </a>
+          <span>
+              <a href="https://www.facebook.com/bridgelabz/" data-show-faces="true" data-share="true">
+              <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2
+              Fbridgelabz%2F&width=63&layout=button&action=like&size=large&show_
+              faces=false&share=false&height=65&appId"
+                width="63" height="65" style="border:none;overflow:hidden" 
+                scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+              </a>
+          </span>
+            <mat-card-title style="text-align:left">
+              Our  twitter profile.. 
+            </mat-card-title>       
+            <span>
+              <iframe src="https://platform.twitter.com/widgets/follow_button.html?screen_name=BridgeLabz&show_screen_name=false&show_count=false&size=l"
+                title="Follow TwitterDev on Twitter" width="80" height="40" style="border: 0; overflow: hidden;">Follow @BridgeLabz
+             </iframe> 
+            </span>
+            <mat-card-title style="text-align:left">
+              Our LinkedIn profile..
+            </mat-card-title>
+            <span>
+              <a href="https://in.linkedin.com/company/bridgelabz-com">
+                <button mat-raised-button color="primary" type="button">
+                 <b style="font-size:26px">in</b>
+                </button>
+              </a>
+            </span>
       <mat-card-actions>
         <span style="float:right">
           <button mat-raised-button color="primary" type="submit" [disabled]="!socialData.form.valid">Next</button>
         </span>
       </mat-card-actions>
     </form>
+    
   </mat-card>
 
 </div>

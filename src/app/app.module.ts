@@ -9,7 +9,7 @@ import { EmployeeDataComponent } from '../Components/employee-data/employee-data
 import { BankInformationComponent } from '../Components/bank-information/bank-information.component';
 import { QualificationComponent } from '../Components/qualification/qualification.component';
 import { PersonalDataComponent } from '../Components/personal-data/personal-data.component';
-import { ProfileUploadComponent, DialogOverviewExampleComponent } from '../Components/profile-upload/profile-upload.component';
+import { ProfileUploadComponent } from '../Components/profile-upload/profile-upload.component';
 import { ThankYouMsgComponent } from '../Components/thank-you-msg/thank-you-msg.component';
 
 import { FormsModule } from '@angular/forms';
@@ -41,11 +41,12 @@ import { SocialDetailsComponent } from '../Components/social-details/social-deta
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { ChildComponent } from '../Components/child/child.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogOverviewExampleComponent,
     EmployeeDataComponent,
     BankInformationComponent,
     QualificationComponent,
@@ -54,13 +55,15 @@ import { MatMenuModule } from '@angular/material/menu';
     ThankYouMsgComponent,
     HomeComponent,
     SocialDetailsComponent,
+    ChildComponent,
 
   ],
-  entryComponents: [DialogOverviewExampleComponent],
+  // entryComponents: [DialogOverviewExampleComponent],
   imports: [
     BrowserModule,
     MatDialogModule,
     AppRoutingModule,
+    MatProgressBarModule,
     MatGridListModule,
     MatCheckboxModule,
     FormsModule,

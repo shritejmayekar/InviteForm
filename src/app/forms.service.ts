@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FormsService {
   private subject = new Subject<any>();
-
+  imageSetter: any;
   constructor(private commonService: DataService) { }
 
   // public loadLocalData(): Observable<any> {
@@ -28,6 +28,12 @@ export class FormsService {
         localStorage.setItem('cityData', JSON.stringify(data.data.cityData));
 
       });
+  }
+  setImage(image) {
+    this.imageSetter = image;
+  }
+  getImage() {
+    return this.imageSetter;
   }
 
 

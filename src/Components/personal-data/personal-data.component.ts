@@ -27,18 +27,18 @@ export class PersonalDataComponent implements OnInit {
   relationAsa = JSON.parse(localStorage.getItem('configData')).relation_type;
   ngOnInit() {
     this.dataObject = JSON.parse(localStorage.getItem('personalDetails'));
-    if (this.dataObject) {
-    for (let i = 0; i <= this.dataObject.employeeRelative.length; i++) {
-      this.name = this.dataObject.employeeRelative[i].name;
-      this.contact = this.dataObject.employeeRelative[i].contact;
-      this.occupation = this.dataObject.employeeRelative[i].occupation;
-      this.relationAs = this.dataObject.employeeRelative[i].relationAs;
-      this.address = this.dataObject.address;
-      this.permanentAddress = this.dataObject.permanentAddress;
-      this.dob = this.dataObject.dob;
-      this.relativeAnnualSalary = this.dataObject.employeeRelative[i].relativeAnnualSalary;
-    }
-  }
+  //   if (this.dataObject) {
+  //   for (let i = 0; i <= this.dataObject.employeeRelative.length; i++) {
+  //     this.name = this.dataObject.employeeRelative[i].name;
+  //     this.contact = this.dataObject.employeeRelative[i].contact;
+  //     this.occupation = this.dataObject.employeeRelative[i].occupation;
+  //     this.relationAs = this.dataObject.employeeRelative[i].relationAs;
+  //     this.address = this.dataObject.address;
+  //     this.permanentAddress = this.dataObject.permanentAddress;
+  //     this.dob = this.dataObject.dob;
+  //     this.relativeAnnualSalary = this.dataObject.employeeRelative[i].relativeAnnualSalary;
+  //   }
+  // }
   }
   onSubmit(form: NgForm) {
     if (form.invalid) {

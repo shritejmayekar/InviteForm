@@ -7,6 +7,7 @@ import { PersonalDataComponent } from '../Components/personal-data/personal-data
 import { ProfileUploadComponent } from '../Components/profile-upload/profile-upload.component';
 import { HomeComponent } from '../Components/home/home.component';
 import { SocialDetailsComponent } from '../Components/social-details/social-details.component';
+import { ChildComponent } from '../Components/child/child.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'profileUpload',
     component: ProfileUploadComponent
+  },
+  {
+    path: 'child',
+    component: ChildComponent
   }
 ];
 

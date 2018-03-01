@@ -126,7 +126,7 @@
           <h3 style="text-align:left">Training Institute</h3> &emsp;
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel={{this.dataObject.training[i].institute}} required>
+          <input matInput placeholder="For e.g JSpider" name="institute" type="text" ngModel={{this.dataObject.training[0].institute}} required>
           <mat-error>Please enter name of Institute</mat-error>
         </mat-form-field>
 
@@ -134,7 +134,7 @@
           <h3 style="text-align:left">Please enter trainning duration in months&emsp;</h3>
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel={{this.dataObject.training[i].duration}} required>
+          <input matInput placeholder="For e.g 8" name="duration" type="text" ngModel={{this.dataObject.training[0].duration}} required>
 
         </mat-form-field>
         <mat-card-title style="text-align:left">
@@ -142,7 +142,7 @@
         </mat-card-title>
 
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel={{this.dataObject.training[i].trainingIn}} required>
+          <input matInput placeholder="For e.g Java" name="trainingIn" type="text" ngModel={{this.dataObject.training[0].trainingIn}} required>
           <mat-error>Please enter the Bank Name</mat-error>
 
         </mat-form-field>
@@ -151,7 +151,7 @@
 
         </mat-card-title>
         <mat-form-field style="width:10em">
-          <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel={{this.dataObject.training[i].location}} required>
+          <mat-select placeholder="Hiring Cities" name="location" [(value)]="selected" ngModel={{this.dataObject.training[0].location}} required>
             <mat-option *ngFor="let hiringCity of hiringCities" [value]="hiringCity">
               {{ hiringCity }}
             </mat-option>
@@ -162,7 +162,7 @@
 
         </mat-card-title>
         <mat-form-field class="input100">
-          <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel={{this.dataObject.training[i].hiringPlace}} required>
+          <input matInput placeholder="For e.g Seed Info tech" name="hiringPlace" type="text" ngModel={{this.dataObject.hiringPlace}} required>
 
         </mat-form-field>
       </div>

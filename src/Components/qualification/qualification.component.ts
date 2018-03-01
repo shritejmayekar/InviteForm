@@ -23,7 +23,7 @@ export class QualificationComponent implements OnInit {
   academics: any;
   qualification: any;
   qualifiactions = JSON.parse(localStorage.getItem('configData')).qualification;
-  hiringCities = JSON.parse(localStorage.getItem('cityData')).cityData;
+  hiringCities = JSON.parse(localStorage.getItem('cityData'));
   passingYear = [];
   counter = [];
   constructor(private router: Router, private location: Location, private commonService: DataService) { }
@@ -45,15 +45,14 @@ export class QualificationComponent implements OnInit {
     //   console.log(i);
     // }
     console.log(this.dataObject);
-
   }
-    show() {
-      if (JSON.parse(localStorage.getItem('inviteFormDetails')).profileDetails.training === false) {
-        return false;
-      } else {
-        return true;
-      }
+  show() {
+    if (JSON.parse(localStorage.getItem('inviteFormDetails')).profileDetails.training === false) {
+      return false;
+    } else {
+      return true;
     }
+  }
 
   AddQualification() {
     $('#extraQualification').show();
@@ -72,7 +71,7 @@ export class QualificationComponent implements OnInit {
       return;
     }
     console.log(form.value);
-   // console.log(JSON.parse(form.value.typeOfQualification));
+    // console.log(JSON.parse(form.value.typeOfQualification));
 
     form.value.id = 'choice1';
     form.value.finalYearPercentageQualification = '';
@@ -84,7 +83,7 @@ export class QualificationComponent implements OnInit {
         'training': [{
           'institute': form.value.institute,
           'duration': form.value.duration,
-        'trainingIn': form.value.trainingIn,
+          'trainingIn': form.value.trainingIn,
           'location': form.value.location
         }],
       },

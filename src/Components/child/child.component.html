@@ -1,0 +1,9 @@
+<div>
+<input  mat-raised-button type="file" (change)="fileChangeEvent($event)" />
+<button (click)="saveImg(croppedImage)" mat-raised-button color="accent">Crop</button>
+<mat-card>
+<image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
+  format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"> </image-cropper>
+
+</mat-card>
+</div>

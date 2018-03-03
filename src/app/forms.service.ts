@@ -25,8 +25,8 @@ export class FormsService {
     this.commonService.getService(environment.baseUrl + 'readConfig?configType=all')
       .subscribe(data => {
         console.log(data);
-        localStorage.setItem('configData', JSON.stringify(data.data));
-        localStorage.setItem('cityData', JSON.stringify(data.data.cityData));
+        localStorage.setItem('configData', JSON.stringify(data['data']));
+        localStorage.setItem('cityData', JSON.stringify(data['data'].cityData));
 
       });
   }

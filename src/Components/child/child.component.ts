@@ -9,6 +9,7 @@ import { FormsService } from '../../app/forms.service';
 export class ChildComponent implements OnInit {
   message: String = 'Hola Mundo!';
   croppedImage: any;
+  public src: any;
  public originalImage: any;
   imageChangedEvent: any;
   constructor(public dialogRef: MatDialogRef<ChildComponent>,
@@ -34,7 +35,7 @@ export class ChildComponent implements OnInit {
     reader.onload = function () {
       const dataURL = reader.result;
       const output = document.getElementById('output');
-      output.src = dataURL;
+      output['src'] = dataURL;
       console.log(dataURL);
     };
   }
@@ -46,12 +47,6 @@ export class ChildComponent implements OnInit {
   imageLoaded(image: string) {
     console.log(image);
 
-  }
-  onFileChange(event) {
-    if (event.target.files.length > 0) {
-      let file = event.target.files[0];
-      this.form.get('avatar').setValue(file);
-    }
   }
 
 }

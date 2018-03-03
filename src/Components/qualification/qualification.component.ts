@@ -16,6 +16,7 @@ export class QualificationComponent implements OnInit {
   public dataObject: any;
   discipline: any;
   college: any;
+  public data: any;
   university: any;
   aggregatePercentage: any;
   typeOfQualification: any;
@@ -76,7 +77,6 @@ export class QualificationComponent implements OnInit {
     control.removeAt(i);
   }
   save(model) {
-    
     // call API to save customer
     console.log(model.value);
     this.dataObject = {
@@ -102,10 +102,10 @@ export class QualificationComponent implements OnInit {
         this.commonService.getService(environment.baseUrl + 'verify/' +
           JSON.parse(localStorage.getItem('EmployeeToken')))
           .subscribe(data => {
-            console.log(data.data);
+            console.log(data['data']);
             // console.log(data);
-            if (data.data) {
-              localStorage.setItem('profileData', JSON.stringify(data.data.profileDetails));
+            if (data['data']) {
+              localStorage.setItem('profileData', JSON.stringify(data['data'].profileDetails));
             }
           });
       });

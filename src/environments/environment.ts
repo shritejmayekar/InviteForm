@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://dev.fundoohr.bridgelabz.com/api/'
+  baseUrl: 'https://dev.fundoohr.bridgelabz.com/api/',
+  imgaeUrl: 'https://dev.fundoohr.bridgelabz.com/',
 };

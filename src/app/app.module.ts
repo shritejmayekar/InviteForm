@@ -43,6 +43,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { ChildComponent } from '../Components/child/child.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormArray, FormGroupName, ReactiveFormsModule } from '@angular/forms';
+import { AddemployeeComponent } from '../Components/addemployee/addemployee.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -56,12 +59,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     HomeComponent,
     SocialDetailsComponent,
     ChildComponent,
+    AddemployeeComponent,
 
   ],
   // entryComponents: [DialogOverviewExampleComponent],
   imports: [
     BrowserModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatTableModule,
     AppRoutingModule,
     MatProgressBarModule,
     MatGridListModule,

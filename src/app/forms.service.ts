@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class FormsService {
   private subject = new Subject<any>();
   imageSetter: any;
+  originalSetter: any;
   constructor(private commonService: DataService) { }
 
   // public loadLocalData(): Observable<any> {
@@ -34,6 +35,12 @@ export class FormsService {
   }
   getImage() {
     return this.imageSetter;
+  }
+  setOriginalImage(img) {
+    this.originalSetter = img;
+  }
+  getOriginalImage() {
+    return this.originalSetter;
   }
 
 

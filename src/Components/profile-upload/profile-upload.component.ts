@@ -19,6 +19,7 @@ export class ProfileUploadComponent implements OnInit {
   original: any;
   animal: String = 'cat';
   name: String;
+  upload: any;
   message: string;
   constructor(public dialog: MatDialog, private formService: FormsService ,
     private location: Location , private commonService: DataService) { }
@@ -35,42 +36,47 @@ export class ProfileUploadComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-      // // this.animal = result;
-     // this.dialogCrop = this.animal;
       const contentType = 'image/png';
-       // const b64Data = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAY'  +
-      // 'AAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
-     // const b64Data = this.dialogCrop.replace('data:image/png;base64,', '\s');
-     // const blob = b64toBlob(b64Data, contentType);
-     // const blobUrl = URL.createObjectURL(blob);
-     // console.log(blobUrl);
-     // const img = document.createElement('img');
-     console.log(this.animal);
       this.dialogCrop = this.formService.getImage();
-      console.log(this.dialogCrop);
-      const b64Data = this.dialogCrop.replace('data:image/png;base64,', '');
-      console.log(b64Data);
-     const blob = b64toBlob(b64Data, contentType);
-     const blobUrl = URL.createObjectURL(blob);
-     console.log(blobUrl);
-      this.datas = {
-        'croppedImage': blobUrl,
-        'originalImage': blobUrl,
-        'imageName': 'frog.jpg'
-      };
+     this.original = this.formService.getOriginalImage();
+      const b64Data = this.dialogCrop;
+      console.log(this.original);
+      // const b64Data = this.dialogCrop.replace('data:image/png;base64,', '');
 
-      this.commonService.postService(environment.baseUrl + 'addEmployeeData?' +
-        'formSection=profileImageDetails&employeeToken=' +
-        JSON.parse(localStorage.getItem('EmployeeToken')),
-        this.datas)
-        .subscribe(data => {
-          console.log(data);
-        });
+      const blob = dataURItoBlob(b64Data);
+      const blobUrl = URL.createObjectURL(blob);
+      console.log(blobUrl);
+    //   const getCut = blobUrl.replace('blob:http://localhost:4200/', '');
+    //   const appended = 'blob:' + environment.imgaeUrl + getCut;
+    //   this.upload = dataURItoBlob(this.dialogCrop);
+    //   const datas = { profileImageDetails: {} };
+    //   this.datas = {
+    //     'croppedImage': blobUrl,
+    //     'originalImage': blobUrl,
+    //   };
+
+    //   this.commonService.postService(environment.baseUrl + 'addEmployeeData?' +
+    //     'formSection=profileImageDetails&employeeToken=' +
+    //     JSON.parse(localStorage.getItem('EmployeeToken')),
+    //     this.datas)
+    //     .subscribe(data => {
+    //       console.log(data);
+    //     });
 
 
     });
-    const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
+    const dataURItoBlob = function (dataURI) {
+      const binary = atob(dataURI.split(',')[1]);
+      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      const array = [];
+      for (let i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], {
+        type: mimeString
+      });
+    };
+    const b64toBlob = (b64Data, contentType = 'mimeString', sliceSize = 512) => {
       const byteCharacters = atob(b64Data);
       const byteArrays = [];
 

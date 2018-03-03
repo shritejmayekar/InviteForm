@@ -1,0 +1,87 @@
+<div class="container-contact100">
+<div class="container-contact100">
+
+
+    <mat-card>
+        <form #addEmployeeData="ngForm" (ngSubmit)="onSubmit(addEmployeeData)">
+
+            <mat-card-title>
+                <span class="contact100-form-title">
+                   Add Employee
+                </span>
+            </mat-card-title>
+            <mat-card-content>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-table #table [dataSource]="dataSource">
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                            <mat-form-field class="input100">
+                           
+                                <input matInput [matDatepicker]="picker" name="dateOfJoinin" placeholder="Choose a date" required ngModel>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error>Enter the valid date</mat-error>
+                            
+                            </mat-form-field>
+
+                    </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <mat-form-field class="input100">
+                            <input matInput placeholder="Enter your email" type="email" value={{emailAddress}} name="emailAddress" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                ngModel required />
+                                <mat-error>Please enter valid email</mat-error>
+                        </mat-form-field>
+                    </mat-cell>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                    <mat-form-field>
+                        <mat-select placeholder="City " [(ngModel)]="selected" name="city" required>
+                            <mat-option *ngFor="let city of cities" [value]="city">
+                                {{city}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    </mat-cell>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <mat-header-cell *matHeaderCellDef> reffered By </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                    <mat-form-field class="input100">
+                        <input matInput placeholder="Reffered by" type="text"  name="refferedBy" 
+                            ngModel  />
+                        </mat-form-field>
+                    
+                    </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-card-actions > 
+                <span style="float:right">
+                <button mat-fab color="primary" type='submit'>+</button>
+
+                </span>
+
+            </mat-card-actions>
+        </form>
+    </mat-card>
+
+</div>
+
+</div>

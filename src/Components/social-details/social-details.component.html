@@ -52,6 +52,18 @@
                 </button>
               </a>
             </span>
+            <mat-card-title style="text-align:left">
+             Have an Github account
+            </mat-card-title>
+            <mat-form-field class="input100">
+              <input matInput placeholder="Enter github Id" type="text" value={{gitId}} name="gitId" 
+                ngModel required/>
+                <mat-error>Enter git Id</mat-error>
+            </mat-form-field>
+            <span>
+           <a href="https://github.com/join?source=header">
+            SignUp for GitHub Account</a>
+            </span>
       <mat-card-actions>
         <span style="float:right">
           <button mat-raised-button color="primary" type="submit" [disabled]="!socialData.form.valid">Next</button>

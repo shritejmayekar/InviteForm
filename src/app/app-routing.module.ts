@@ -8,6 +8,7 @@ import { ProfileUploadComponent } from '../Components/profile-upload/profile-upl
 import { HomeComponent } from '../Components/home/home.component';
 import { SocialDetailsComponent } from '../Components/social-details/social-details.component';
 import { ChildComponent } from '../Components/child/child.component';
+import { AddemployeeComponent } from '../Components/addemployee/addemployee.component';
 const routes: Routes = [
   {
     path: '',
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'child',
     component: ChildComponent
+  },
+  {
+    path: 'addemployee',
+    component: AddemployeeComponent
   }
 ];
 

@@ -29,10 +29,10 @@ export class EmployeeDataComponent implements OnInit {
   }
   public employeeDataObject: any;
   emailAddress: any;
-  firstName: any = new FormControl('', [Validators.required, Validators.pattern('[A-Z]{5}\d{4}[A-Z]{1}')]);
-  lastName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  middleName: any = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  phone: any = new FormControl('', Validators.required);
+  firstName: any;
+  lastName: any;
+  middleName: any ;
+  phone: any ;
   gender: any;
 
   ngOnInit() {
@@ -60,13 +60,14 @@ export class EmployeeDataComponent implements OnInit {
     if (localStorage.getItem('employeeDetails')) {
       this.employeeDataObject = JSON.parse(localStorage.getItem('employeeDetails'));
       // this.activities$ = this.formService.loadLocalData;
-    } else {
-      this.emailAddress = '';
-      this.firstName = '';
-      this.middleName = '';
-      this.lastName = '';
-      this.phone = '';
     }
+    // else {
+    //   this.emailAddress = '';
+    //   this.firstName = '';
+    //   this.middleName = '';
+    //   this.lastName = '';
+    //   this.phone = '';
+    // }
     $('#progress').hide();
   }
 

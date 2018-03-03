@@ -25,8 +25,8 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Ram" name="firstName" type="text" ngModel={{employeeDataObject.firstName}} required>
-        <mat-error *ngIf="firstName.invalid">Please enter the First Name</mat-error>
+        <input matInput placeholder="For e.g Ram" name="firstName" type="text" pattern="^([a-zA-Z]{3,15})$" [ngModel]=employeeDataObject.firstName required>
+        <mat-error>Please enter the First Name</mat-error>
 
       </mat-form-field>
       <mat-card-title style="text-align:left">Middle Name
@@ -34,8 +34,8 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Mohan" name="middleName" type="text" ngModel={{employeeDataObject.middleName}} required>
-        <mat-error *ngIf="middleName.invalid">Please enter the Middle Name</mat-error>
+        <input matInput placeholder="For e.g Mohan" name="middleName" type="text"  pattern="^([a-zA-Z]{3,15})$" ngModel={{employeeDataObject.middleName}} required>
+        <mat-error >Please enter the Middle Name</mat-error>
       </mat-form-field>
       <mat-card-title style="text-align:left">Last Name&emsp;
         <span class="asterisk_input"> </span>
@@ -44,8 +44,8 @@
       <mat-card-content>This has to be same as it appears in PAN
       </mat-card-content>
       <mat-form-field class="input100">
-        <input matInput placeholder="For e.g Sharma" name="lastName" ngModel={{employeeDataObject.lastName}} required>
-        <mat-error *ngIf="lastName.invalid">Please enter last Name</mat-error>
+        <input matInput placeholder="For e.g Sharma"  pattern="^([a-zA-Z]{3,15})$" name="lastName" ngModel={{employeeDataObject.lastName}} required>
+        <mat-error >Please enter last Name</mat-error>
 
 
       </mat-form-field>

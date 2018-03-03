@@ -17,6 +17,7 @@ export class BankInformationComponent implements OnInit {
 
   constructor(private router: Router, private location: Location, private commonService: DataService) { }
   public bankObject: any;
+  public datas: any;
   panNumber = new FormControl('', [Validators.required]);
   aadhaarId = new FormControl('', [Validators.required, Validators.maxLength(12)]);
   bankName = new FormControl('', Validators.required);

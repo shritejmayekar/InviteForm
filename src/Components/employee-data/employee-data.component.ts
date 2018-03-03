@@ -27,7 +27,7 @@ export class EmployeeDataComponent implements OnInit {
       localStorage.setItem('EmployeeToken', JSON.stringify(res.token));
     });
   }
-  public employeeDataObject: any;
+  public employeeDataObject: any = {};
   emailAddress: any;
   firstName: any;
   lastName: any;
@@ -43,15 +43,15 @@ export class EmployeeDataComponent implements OnInit {
 
       .subscribe(data => {
         console.log(data);
-        if (data.data) {
-          localStorage.setItem('bankDetails', JSON.stringify(data.data.bankDetails));
-          localStorage.setItem('employeeDetails', JSON.stringify(data.data.employeeDetails));
-          localStorage.setItem('employeeObjectId', JSON.stringify(data.data.employeeObjectId));
-          localStorage.setItem('inviteFormDetails', JSON.stringify(data.data.inviteFormDetails));
-          localStorage.setItem('personalDetails', JSON.stringify(data.data.personalDetails));
-          localStorage.setItem('profileData', JSON.stringify(data.data.profileDetails));
-          localStorage.setItem('profileDetails', JSON.stringify(data.data.profileDetails));
-          localStorage.setItem('profileImageDetails', JSON.stringify(data.data.profileImageDetails));
+        if (data['data']) {
+          localStorage.setItem('bankDetails', JSON.stringify(data['data'].bankDetails));
+          localStorage.setItem('employeeDetails', JSON.stringify(data['data'].employeeDetails));
+          localStorage.setItem('employeeObjectId', JSON.stringify(data['data'].employeeObjectId));
+          localStorage.setItem('inviteFormDetails', JSON.stringify(data['data'].inviteFormDetails));
+          localStorage.setItem('personalDetails', JSON.stringify(data['data'].personalDetails));
+          localStorage.setItem('profileData', JSON.stringify(data['data'].profileDetails));
+          localStorage.setItem('profileDetails', JSON.stringify(data['data'].profileDetails));
+          localStorage.setItem('profileImageDetails', JSON.stringify(data['data'].profileImageDetails));
         }
         this.setData();
       });
